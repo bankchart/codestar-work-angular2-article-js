@@ -254,30 +254,38 @@ document.getElementById('ex-output-15').innerHTML = '\n' + isPrime(23);
 
 /* start: ex-16 */
 function gcd(a, b){ // minus value....
-    var num_min = a < b ? a : b;
+    var a_abs = Math.abs(a);
+    var b_abs = Math.abs(b);
+    var num_min = a_abs < b_abs ? a_abs : b_abs;
     var result = 'waiting';
-    for(var i=num_min;i>-100;i--){
-        console.log('a%i = ' + a + '%' + i + ' = ' + (a%i));
-        console.log('b%i = ' + b + '%' + i + ' = ' + (b%i));
-        if((a%i==0 || a%i==-0) && (b%i==0 || b%i==-0)){
+    for(var i=num_min;i>0;i--){
+        if(a_abs%i==0 && b_abs%i==0){
             result = i;
             break;
         }
     }
     return result == 'waiting' ? 'not found gcd.' : result;
 }
-document.getElementById('ex-code-16').innerHTML = '\nfunction isPrime(p){\n' +
-                                                    '\tvar nums = [];\n' +
-                                                    '\tfor(var i=1;i&#60;&#61;p;i++){\n' +
-                                                    '\t\tif(p%i == 0)\n' +
-                                                    '\t\t\tnums.push(i);\n' +
-                                                    '\t\tif(nums.length > 2)\n' +
+document.getElementById('ex-code-16').innerHTML = '\nfunction gcd(a, b){\n' +
+                                                    '\tvar a_abs = Math.abs(a);\n' +
+                                                    '\tvar b_abs = Math.abs(b);\n' +
+                                                    '\tvar num_min = a_abs < b_abs ? a_abs : b_abs;\n' +
+                                                    '\tvar result = \'waiting\';\n' +
+                                                    '\tfor(var i=num_min;i>0;i--){\n' +
+                                                    '\t\tif(a_abs%i==0 && b_abs%i==0){\n' +
+                                                    '\t\t\tresult = i;\n' +
                                                     '\t\t\tbreak;\n' +
+                                                    '\t\t}\n' +
                                                     '\t}\n' +
-                                                    '\treturn nums.length > 2 ? false : true;\n' +
+                                                    '\treturn result == \'waiting\' ? \'not found gcd.\' : result;\n' +
                                                     '}';
 
 document.getElementById('ex-usage-16').innerHTML = '\ngcd(15, 10);';
-document.getElementById('ex-output-16').innerHTML = '\n' + gcd(-15, 5);
-console.log(-15/4);
+document.getElementById('ex-output-16').innerHTML = '\n' + gcd(15, 10);
 /* end: ex-16 */
+
+/* start: ex-17 */
+function xxx(){
+    
+}
+/* end: ex-17 */
