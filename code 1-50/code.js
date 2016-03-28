@@ -285,7 +285,23 @@ document.getElementById('ex-output-16').innerHTML = '\n' + gcd(15, 10);
 /* end: ex-16 */
 
 /* start: ex-17 */
-function xxx(){
-    
+function lcm(a, b){
+
 }
+document.getElementById('ex-code-17').innerHTML = '\nfunction lcm(a, b){\n' +
+                                                    '\tvar a_abs = Math.abs(a);\n' +
+                                                    '\tvar b_abs = Math.abs(b);\n' +
+                                                    '\tvar num_min = a_abs < b_abs ? a_abs : b_abs;\n' +
+                                                    '\tvar result = \'waiting\';\n' +
+                                                    '\tfor(var i=num_min;i>0;i--){\n' +
+                                                    '\t\tif(a_abs%i==0 && b_abs%i==0){\n' +
+                                                    '\t\t\tresult = i;\n' +
+                                                    '\t\t\tbreak;\n' +
+                                                    '\t\t}\n' +
+                                                    '\t}\n' +
+                                                    '\treturn result == \'waiting\' ? \'not found gcd.\' : result;\n' +
+                                                    '}';
+
+document.getElementById('ex-usage-17').innerHTML = '\n.';
+document.getElementById('ex-output-17').innerHTML = '\n' + '.';
 /* end: ex-17 */
