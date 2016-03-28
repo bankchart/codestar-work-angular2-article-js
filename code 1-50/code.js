@@ -131,5 +131,34 @@ document.getElementById('ex-output-9').innerHTML = '\n' + poundToGram(12) + ' à¸
 /* end: ex-9 */
 
 /* start: ex-10 */
-
+function distance(x1, y1, x2, y2){
+    return Math.sqrt(
+        Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)
+    );
+}
+document.getElementById('ex-code-10').innerHTML = '\nfunction distance(x1, y1, x2, y2){\n' +
+                                                    '\treturn Math.sqrt(\n' +
+                                                    '\t\tMath.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)\n' +
+                                                '\t);\n' +
+                                                '}';
+document.getElementById('ex-usage-10').innerHTML = '\ndistance(-2, -3, -4, 4);';
+document.getElementById('ex-output-10').innerHTML = '\n' + distance(-2, -3, -4, 4) + ' unit';
 /* end: ex-10 */
+
+/* start: ex-11 */
+function max3(a, b, c){
+    var values = [];
+    for(var i=0;i<max3.arguments.length;i++)
+        values.push(max3.arguments[i]);
+    return Math.max.apply(null, values);
+
+}
+document.getElementById('ex-code-11').innerHTML = '\nfunction max3(a, b, c){\n' +
+                                                    '\tvar values = [];\n' +
+                                                    '\tfor(var i=0;i&#60;max3.arguments.length;i++)\n' +
+                                                    '\t\tvalues.push(max3.arguments[i]);\n' +
+                                                    '\treturn Math.max.apply(null, values);\n' +
+                                                '}';
+document.getElementById('ex-usage-11').innerHTML = '\nmax3(3, 5, 2);';
+document.getElementById('ex-output-11').innerHTML = '\n' + max3(3, 5, 2);
+/* end: ex-11 */

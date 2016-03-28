@@ -11,7 +11,7 @@ https://codestar.work/article/js
 *7. ให้เขียน function degreeToRadian(d) แปลงมุมจาก degree เป็น radian (1 degree = π radian)
 *8. ให้เขียน function ounceToTical(o) แปลงน้ำหนักจากออนซ์เป็นบาทไทย โดยที่ 1000 กรัม = 35.274 ออนซ์ และ 1 บาทไทย = 15.2 กรัม
 *9. ให้เขียน function poundToGram(x) แปลง x จากหน่วยปอนด์เป็นกรัม
-10. ให้เขียน function distance(x1, y1, x2, y2) หาว่าจุด (x1,y1) และ (x2, y2) ห่างกันกี่หน่วย
+*10. ให้เขียน function distance(x1, y1, x2, y2) หาว่าจุด (x1,y1) และ (x2, y2) ห่างกันกี่หน่วย
 
 แบบฝึกหัด
 
