@@ -253,7 +253,31 @@ document.getElementById('ex-output-15').innerHTML = '\n' + isPrime(23);
 /* end: ex-15 */
 
 /* start: ex-16 */
-function gcd(a, b){
-    
+function gcd(a, b){ // minus value....
+    var num_min = a < b ? a : b;
+    var result = 'waiting';
+    for(var i=num_min;i>-100;i--){
+        console.log('a%i = ' + a + '%' + i + ' = ' + (a%i));
+        console.log('b%i = ' + b + '%' + i + ' = ' + (b%i));
+        if((a%i==0 || a%i==-0) && (b%i==0 || b%i==-0)){
+            result = i;
+            break;
+        }
+    }
+    return result == 'waiting' ? 'not found gcd.' : result;
 }
+document.getElementById('ex-code-16').innerHTML = '\nfunction isPrime(p){\n' +
+                                                    '\tvar nums = [];\n' +
+                                                    '\tfor(var i=1;i&#60;&#61;p;i++){\n' +
+                                                    '\t\tif(p%i == 0)\n' +
+                                                    '\t\t\tnums.push(i);\n' +
+                                                    '\t\tif(nums.length > 2)\n' +
+                                                    '\t\t\tbreak;\n' +
+                                                    '\t}\n' +
+                                                    '\treturn nums.length > 2 ? false : true;\n' +
+                                                    '}';
+
+document.getElementById('ex-usage-16').innerHTML = '\ngcd(15, 10);';
+document.getElementById('ex-output-16').innerHTML = '\n' + gcd(-15, 5);
+console.log(-15/4);
 /* end: ex-16 */
