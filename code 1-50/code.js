@@ -162,3 +162,98 @@ document.getElementById('ex-code-11').innerHTML = '\nfunction max3(a, b, c){\n' 
 document.getElementById('ex-usage-11').innerHTML = '\nmax3(3, 5, 2);';
 document.getElementById('ex-output-11').innerHTML = '\n' + max3(3, 5, 2);
 /* end: ex-11 */
+
+/* start: ex-12 */
+function sum(n){
+    if(n == 0)
+        return n;
+    else
+        return n + sum(n - 1);
+}
+document.getElementById('ex-code-12').innerHTML = '\nfunction sum(n){\n' +
+                                                    '\tif(n == 0)\n' +
+                                                    '\t\treturn n;\n' +
+                                                    '\telse\n' +
+                                                    '\t\treturn n + sum(n - 1);\n' +
+                                                '}';
+document.getElementById('ex-usage-12').innerHTML = '\nsum(4);';
+document.getElementById('ex-output-12').innerHTML = '\n' + sum(4);
+/* end: ex-12 */
+
+/* start: ex-13*/
+function sumEven(n){
+    var sum = 0;
+    for(var i=1;i<=n;i++)
+        if(i%2==0)
+            sum += i;
+    return sum;
+}
+document.getElementById('ex-code-13').innerHTML = '\nfunction sumEven(n){\n' +
+                                                    '\tvar sum = 0;\n' +
+                                                    '\tfor(var i=1;i&#60&#61n;i++)\n' +
+                                                    '\t\tif(i%2==0)\n' +
+                                                    '\t\t\tsum += i;\n' +
+                                                    '\treturn sum;\n' +
+                                                '}';
+document.getElementById('ex-usage-13').innerHTML = '\nsum(4);';
+document.getElementById('ex-output-13').innerHTML = '\n' + sum(4);
+/* end: ex-13 */
+
+/* start: ex-14 */
+function divider(n){
+    var nums = [];
+    for(var i=1;i<=n;i++){
+        if(n%i == 0)
+            nums.push(i);
+    }
+    return nums;
+}
+document.getElementById('ex-code-14').innerHTML = '\nfunction divider(n){\n' +
+                                                    '\tvar nums = [];\n' +
+                                                    '\tfor(var i=1;i&#60;&#61;n;i++){\n' +
+                                                    '\t\tif(n%i == 0)\n' +
+                                                    '\t\t\tnums.push(i);\n' +
+                                                    '\t}\n' +
+                                                    '\treturn nums;\n' +
+                                                '}';
+document.getElementById('ex-usage-14').innerHTML = '\ndivider(10);';
+document.getElementById('ex-output-14').innerHTML = '\n' + divider(10);
+/* end: ex-14 */
+
+/* start: ex-15 */
+/*
+prime-nubmer-list
+    2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41,
+    43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97,
+    101, 103, 107, 109, 113, ...
+*/
+function isPrime(p){
+    var nums = [];
+    for(var i=1;i<=p;i++){
+        if(p%i == 0)
+            nums.push(i);
+        if(nums.length > 2)
+            break;
+    }
+    return nums.length > 2 ? false : true;
+}
+document.getElementById('ex-code-15').innerHTML = '\nfunction isPrime(p){\n' +
+                                                    '\tvar nums = [];\n' +
+                                                    '\tfor(var i=1;i&#60;&#61;p;i++){\n' +
+                                                    '\t\tif(p%i == 0)\n' +
+                                                    '\t\t\tnums.push(i);\n' +
+                                                    '\t\tif(nums.length > 2)\n' +
+                                                    '\t\t\tbreak;\n' +
+                                                    '\t}\n' +
+                                                    '\treturn nums.length > 2 ? false : true;\n' +
+                                                    '}';
+
+document.getElementById('ex-usage-15').innerHTML = '\nisPrime(23);';
+document.getElementById('ex-output-15').innerHTML = '\n' + isPrime(23);
+/* end: ex-15 */
+
+/* start: ex-16 */
+function gcd(a, b){
+    
+}
+/* end: ex-16 */
