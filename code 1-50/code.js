@@ -389,5 +389,59 @@ document.getElementById('ex-output-21').innerHTML = '\n' + reverse('hello');
 /* end: ex-21 */
 
 /* start: ex-22 */
-
+function isAnagram(s, t){
+    var temp_s = s.trim();
+    var temp_t = t.trim();
+    if(temp_s.length != temp_t.length || temp_s == '' || temp_t == '')
+        return false;
+    var temp_s_r = [];
+    var temp_t_r = [];
+    for(var i=0;i<temp_s.length;i++){
+        temp_s_r.push(temp_s[i]);
+        temp_t_r.push(temp_t[i]);
+    }
+    temp_s_r.sort();
+    temp_t_r.sort();
+    return temp_s_r.toString() == temp_t_r.toString() ? true : false;
+}
+document.getElementById('ex-code-22').innerHTML = '\nfunction isAnagram(s, t){\n' +
+                                                        '\tvar temp_s = s.trim();\n' +
+                                                        '\tvar temp_t = t.trim();\n' +
+                                                        '\tif(temp_s.length != temp_t.length || temp_s == \'\' || temp_t == \'\')\n' +
+                                                        '\t\treturn false;\n' +
+                                                        '\tvar temp_s_r = [];\n' +
+                                                        '\tvar temp_t_r = [];\n' +
+                                                        '\tfor(var i=0;i&#60;temp_s.length;i++){\n' +
+                                                        '\t\ttemp_s_r.push(temp_s[i]);\n' +
+                                                        '\t\ttemp_t_r.push(temp_t[i]);\n' +
+                                                        '\t}\n' +
+                                                        '\ttemp_s_r.sort();\n' +
+                                                        '\ttemp_t_r.sort();\n' +
+                                                        '\treturn temp_s_r.toString() == temp_t_r.toString() ? true : false;\n' +
+                                                    '}';
+document.getElementById('ex-usage-22').innerHTML = '\nisAnagram(\'gallery\', \'allergy\');';
+document.getElementById('ex-output-22').innerHTML = '\n' + isAnagram('gallery', 'allergy');
 /* end: ex-22 */
+
+/* start: ex-23 */
+function isPalindrome(s){
+    return reverse(s) == s ? true : false;
+}
+document.getElementById('ex-code-23').innerHTML = '\nfunction isAnagram(s, t){\n' +
+                                                        '\treturn reverse(s) == s ? true : false;\n' +
+                                                    '}';
+document.getElementById('ex-usage-23').innerHTML = '\nreverse(\'racecar\');';
+document.getElementById('ex-output-23').innerHTML = '\n' + isPalindrome('racecar');
+/* end: ex-23 */
+
+/* start: ex-24 */
+function romanNumber(n){
+    if(isNaN(n))
+        return n + 'is not a number.';
+
+}
+document.getElementById('ex-code-24').innerHTML = '\nfunction romanNumber(n){\n' +
+                                                    '}';
+document.getElementById('ex-usage-24').innerHTML = '\nromanNumber(n);';
+document.getElementById('ex-output-24').innerHTML = '\n' + romanNumber('');
+/* end: ex-24 */
