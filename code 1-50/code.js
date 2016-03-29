@@ -247,7 +247,6 @@ document.getElementById('ex-code-15').innerHTML = '\nfunction isPrime(p){\n' +
                                                     '\t}\n' +
                                                     '\treturn nums.length > 2 ? false : true;\n' +
                                                     '}';
-
 document.getElementById('ex-usage-15').innerHTML = '\nisPrime(23);';
 document.getElementById('ex-output-15').innerHTML = '\n' + isPrime(23);
 /* end: ex-15 */
@@ -279,7 +278,6 @@ document.getElementById('ex-code-16').innerHTML = '\nfunction gcd(a, b){\n' +
                                                     '\t}\n' +
                                                     '\treturn result == \'waiting\' ? \'not found gcd.\' : result;\n' +
                                                     '}';
-
 document.getElementById('ex-usage-16').innerHTML = '\ngcd(15, 10);';
 document.getElementById('ex-output-16').innerHTML = '\n' + gcd(15, 10);
 /* end: ex-16 */
@@ -307,7 +305,6 @@ document.getElementById('ex-code-17').innerHTML = '\nfunction lcm(a, b){\n' +
                                                         '\t}\n' +
                                                         '\treturn result;\n' +
                                                     '}';
-
 document.getElementById('ex-usage-17').innerHTML = '\nlcm(15, 10);';
 document.getElementById('ex-output-17').innerHTML = '\n' + lcm(15, 10);
 /* end: ex-17 */
@@ -327,7 +324,6 @@ document.getElementById('ex-code-18').innerHTML = '\nfunction lcm(a, b){\n' +
                                                         '\t\t\tresult++;\n' +
                                                         '\treturn result;\n' +
                                                     '}';
-
 document.getElementById('ex-usage-18').innerHTML = '\ncountOdd(3, 10);';
 document.getElementById('ex-output-18').innerHTML = '\n' + countOdd(3, 10);
 /* end: ex-18 */
@@ -351,7 +347,6 @@ document.getElementById('ex-code-19').innerHTML = '\nfunction divide35(n){\n' +
                                                         '\t\t\tresult++;\n' +
                                                         '\treturn result;\n' +
                                                     '}';
-
 document.getElementById('ex-usage-19').innerHTML = '\ndivide35(10);';
 document.getElementById('ex-output-19').innerHTML = '\n' + divide35(10);
 /* end: ex-19 */
@@ -364,7 +359,6 @@ function countDivider(a, b, k){
             result++;
     return result==0 ? 'not found' : result;
 }
-console.log(countDivider(10,18,5));
 document.getElementById('ex-code-20').innerHTML = '\nfunction countDivider(a, b, k){\n' +
                                                         '\tvar result = 0;\n' +
                                                         '\tfor(var i=a;i<=b;i++)\n' +
@@ -372,11 +366,28 @@ document.getElementById('ex-code-20').innerHTML = '\nfunction countDivider(a, b,
                                                         '\t\t\tresult++;\n' +
                                                         '\treturn result==0 ? \'not found\' : result;\n' +
                                                     '}';
-
 document.getElementById('ex-usage-20').innerHTML = '\ncountDivider(10,18,5);';
 document.getElementById('ex-output-20').innerHTML = '\n' + countDivider(10,18,5);
 /* end: ex-20 */
 
 /* start: ex-21 */
-
+function reverse(s){
+    var str = '';
+    for(var i=s.length-1;i>=0;i--){
+        str += s[i];
+    }
+    return str;
+}
+document.getElementById('ex-code-21').innerHTML = '\nfunction reverse(s){\n' +
+                                                        '\tvar str = \'\';\n' +
+                                                        '\tfor(var i=s.length-1;i>=0;i--)\n' +
+                                                        '\t\tstr += s[i];\n' +
+                                                        '\treturn str;\n' +
+                                                    '}';
+document.getElementById('ex-usage-21').innerHTML = '\nreverse(\'hello\');';
+document.getElementById('ex-output-21').innerHTML = '\n' + reverse('hello');
 /* end: ex-21 */
+
+/* start: ex-22 */
+
+/* end: ex-22 */
