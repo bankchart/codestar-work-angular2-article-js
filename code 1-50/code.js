@@ -286,22 +286,97 @@ document.getElementById('ex-output-16').innerHTML = '\n' + gcd(15, 10);
 
 /* start: ex-17 */
 function lcm(a, b){
-
+    var num_max = a > b ? a : b;
+    var result = 'not found lcm.';
+    for(var i=num_max;;i++){
+        if(i%a==0 && i%b==0){
+            result = i;
+            break;
+        }
+    }
+    return result;
 }
 document.getElementById('ex-code-17').innerHTML = '\nfunction lcm(a, b){\n' +
-                                                    '\tvar a_abs = Math.abs(a);\n' +
-                                                    '\tvar b_abs = Math.abs(b);\n' +
-                                                    '\tvar num_min = a_abs < b_abs ? a_abs : b_abs;\n' +
-                                                    '\tvar result = \'waiting\';\n' +
-                                                    '\tfor(var i=num_min;i>0;i--){\n' +
-                                                    '\t\tif(a_abs%i==0 && b_abs%i==0){\n' +
-                                                    '\t\t\tresult = i;\n' +
-                                                    '\t\t\tbreak;\n' +
-                                                    '\t\t}\n' +
-                                                    '\t}\n' +
-                                                    '\treturn result == \'waiting\' ? \'not found gcd.\' : result;\n' +
+                                                        '\tvar num_max = a > b ? a : b;\n' +
+                                                        '\tvar result = \'not found lcm.\';\n' +
+                                                        '\tfor(var i=num_max;;i++){\n' +
+                                                        '\t\tif(i%a==0 && i%b==0){\n' +
+                                                        '\t\t\tresult = i;\n' +
+                                                        '\t\t\tbreak;\n' +
+                                                        '\t\t}\n' +
+                                                        '\t}\n' +
+                                                        '\treturn result;\n' +
                                                     '}';
 
-document.getElementById('ex-usage-17').innerHTML = '\n.';
-document.getElementById('ex-output-17').innerHTML = '\n' + '.';
+document.getElementById('ex-usage-17').innerHTML = '\nlcm(15, 10);';
+document.getElementById('ex-output-17').innerHTML = '\n' + lcm(15, 10);
 /* end: ex-17 */
+
+/* start: ex-18 */
+function countOdd(a, b){
+    var result = 0;
+    for(var i=a;i<=b;i++)
+        if(Math.abs(i)%2 != 0)
+            result++;
+    return result;
+}
+document.getElementById('ex-code-18').innerHTML = '\nfunction lcm(a, b){\n' +
+                                                        '\tvar result = 0;\n' +
+                                                        '\tfor(var i=a;i<=b;i++)\n' +
+                                                        '\t\tif(Math.abs(i)%2 != 0)\n' +
+                                                        '\t\t\tresult++;\n' +
+                                                        '\treturn result;\n' +
+                                                    '}';
+
+document.getElementById('ex-usage-18').innerHTML = '\ncountOdd(3, 10);';
+document.getElementById('ex-output-18').innerHTML = '\n' + countOdd(3, 10);
+/* end: ex-18 */
+
+/* start: ex-19 */
+function divide35(n){
+    var result = 0;
+    if(n<0)
+        return 'n ต้องมากกว่า 0';
+    for(var i=1;i<=n;i++)
+        if(i%3==0 || i%5==0)
+            result++;
+    return result;
+}
+document.getElementById('ex-code-19').innerHTML = '\nfunction divide35(n){\n' +
+                                                        '\tvar result = 0;\n' +
+                                                        '\tif(n<0)\n' +
+                                                        '\t\treturn \'n ต้องเป็นจำนวนเต็มที่มากกว่า 0\';\n' +
+                                                        '\tfor(var i=1;i<=n;i++)\n' +
+                                                        '\t\tif(i%3==0 || i%5==0)\n' +
+                                                        '\t\t\tresult++;\n' +
+                                                        '\treturn result;\n' +
+                                                    '}';
+
+document.getElementById('ex-usage-19').innerHTML = '\ndivide35(10);';
+document.getElementById('ex-output-19').innerHTML = '\n' + divide35(10);
+/* end: ex-19 */
+
+/* start: ex-20 */
+function countDivider(a, b, k){
+    var result = 0;
+    for(var i=a;i<=b;i++)
+        if(Math.abs(i)%k ==0)
+            result++;
+    return result==0 ? 'not found' : result;
+}
+console.log(countDivider(10,18,5));
+document.getElementById('ex-code-20').innerHTML = '\nfunction countDivider(a, b, k){\n' +
+                                                        '\tvar result = 0;\n' +
+                                                        '\tfor(var i=a;i<=b;i++)\n' +
+                                                        '\t\tif(Math.abs(i)%k ==0)\n' +
+                                                        '\t\t\tresult++;\n' +
+                                                        '\treturn result==0 ? \'not found\' : result;\n' +
+                                                    '}';
+
+document.getElementById('ex-usage-20').innerHTML = '\ncountDivider(10,18,5);';
+document.getElementById('ex-output-20').innerHTML = '\n' + countDivider(10,18,5);
+/* end: ex-20 */
+
+/* start: ex-21 */
+
+/* end: ex-21 */
