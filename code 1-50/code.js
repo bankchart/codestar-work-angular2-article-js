@@ -435,13 +435,31 @@ document.getElementById('ex-output-23').innerHTML = '\n' + isPalindrome('racecar
 /* end: ex-23 */
 
 /* start: ex-24 */
+/*
+I :	The numeral one. II is two, III is three. You seldom see IIII as 4,
+    since IV can also mean 4, plus its shorter to write.
+
+V :	The numeral 5. IV is 4, VI is 6, VII is 7, VIII is 8.
+
+X :	The numeral 10. IX is 9, XI is 11, etc.
+
+L :	The numeral 50. XL would be 40.
+
+C :	The numeral 100. Think of Century having a hundred years. C is short
+    for the Latin word Centum, but that's not very easy to remember.
+
+D :	The numeral 500.
+
+M :	The numeral 1000.
+*/
 function romanNumber(n){
-    if(isNaN(n))
-        return n + 'is not a number.';
+    var reg = /^[0-9]+$/;
+    if(!reg.test(n))
+        return '\'' + n + '\' ไม่ใช่ตัวเลขจำนวนเต็มที่มากกว่าศูนย์';
 
 }
 document.getElementById('ex-code-24').innerHTML = '\nfunction romanNumber(n){\n' +
                                                     '}';
 document.getElementById('ex-usage-24').innerHTML = '\nromanNumber(n);';
-document.getElementById('ex-output-24').innerHTML = '\n' + romanNumber('');
+document.getElementById('ex-output-24').innerHTML = '\n' + romanNumber('1');
 /* end: ex-24 */
