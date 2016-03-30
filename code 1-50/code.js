@@ -543,7 +543,7 @@ function romanNumber(n){
                 result += romanNumber(i);
                 continue;
             }
-            for(var j=0;j<i/C && i%C==0 && i;j++){
+            for(var j=0;j<i/C && i%C==0;j++){
                 result += romanNumber(C);
             }
             if(i<C)
@@ -551,21 +551,42 @@ function romanNumber(n){
         }
     }else if(value == D){
         return 'D';
+    }else if(value == M - C){
+        return 'CM';
     }else if(value > D && value < M){
-        
+        for(var i of unitValue){
+            if(i < 1)
+                continue;
+            var temp_result = i - D;
+            if(temp_result > 0 && i < 900){
+                result += romanNumber(D);
+                result += romanNumber(temp_result);
+            }else{
+                //console.log(unitValue);
+                result += romanNumber(i);
+            }
+        }
     }else if(value == M){
         return 'M';
-    }else if(value <= LIMIT){
-
+    }else if(value > M && value < LIMIT){
+        for(var i of unitValue){
+            if(i < 1)
+                continue;
+            for(var j=0;j<i/M && i%M == 0;j++){
+                result += romanNumber(M);
+            }
+            if(i < M){
+                result += romanNumber(i);
+            }
+        }
     }
     return result;
 }
-var test = '00';
 document.getElementById('ex-code-24').innerHTML = '\nfunction romanNumber(n){\n' +
                                                     '}';
 document.getElementById('ex-usage-24').innerHTML = '\nromanNumber(n);';
 document.getElementById('ex-output-24').innerHTML = '\n' + romanNumber(34);
-for(var i=0;i<501;i++){
+for(var i=3999;i<5000;i++){
     console.log(i + ' : ' + romanNumber(i));
 }
 /* end: ex-24 */
