@@ -463,6 +463,7 @@ function romanNumber(n){
     const C = 100;
     const D = 500;
     const M = 1000;
+    const LIMIT = 5000;
     var indexWhile = 0;
     var indexUnit = 0 ;
     var reg = /^[0-9]+$/;
@@ -474,33 +475,97 @@ function romanNumber(n){
     if(n<I)
         return 'ควรมีค่ามากกว่าศูนย์';
 
-    for(var i=value.length-1;i>=0;i--)
-        unitValue.push(value[i]);
-
-    while(indexWhile < unitValue.length){
-        var temp = unitValue[indexUnit];
-        for(var i=1;i<unitValue.length - indexWhile;i++)
+    for(var i=0;i<value.length;i++){
+        var temp = '';
+        for(var j=1;j<value.length-i;j++)
             temp += '0';
-        console.log(temp);
-        if(temp<V){
-            console.log(V);
-        }else if(temp<X){
-            console.log(X);
-        }else if(temp<L){
-            console.log(L);
-        }else if(temp<C){
-            console.log(C);
-        }else if(temp<D){
-            console.log(D);
-        }else if(temp<M){
-            console.log(M);
-        }
-        indexWhile++;
-        indexUnit++;
+        unitValue.push(parseInt(value[i] + temp));
     }
+    if(value == I){
+        return 'I';
+    }else if(value == V - I){
+        return 'IV';
+    }else if(value < V){
+        for(var i=0;i<value;i++){
+            result += romanNumber(I);
+        }
+    }else if(value == V){
+        return 'V';
+    }else if(value == X - I){
+        return 'IX';
+    }else if(value > V && value < X){
+        result += 'V' + romanNumber(value-V);
+    }else if(value == X){
+        return 'X';
+    }else if(value == L - X){
+        return 'XL';
+    }else if(value > X && value < L){
+        for(var i of unitValue){
+            if(i < 1)
+                continue;
+            for(var j=0;j<i/X && i%X == 0;j++){
+                if(i > 30){
+                    result += romanNumber(i);
+                    break;
+                }else{
+                    result += romanNumber(X);
+                }
+            }
+            if(i < X){
+                result += romanNumber(i);
+            }
+        }
+    }else if(value == L){
+        return 'L';
+    }else if(value == C - X){
+        return 'XC';
+    }else if(value > L && value < C){ // between 50 - 100
+        for(var i of unitValue){
+            if(i < 1)
+                continue;
+            var temp_result = i - L;
+            if(temp_result > 0 && i < 90){
+                result += romanNumber(L);
+                result += romanNumber(temp_result);
+            }else{
+                result += romanNumber(i);
+            }
+        }
+    }else if(value == C){
+        return 'C';
+    }else if(value == D - C){
+        return 'CD';
+    }else if(value > C && value < D){
+        for(var i of unitValue){
+            if(i < 1)
+                continue;
+            if(i == D - C){
+                result += romanNumber(i);
+                continue;
+            }
+            for(var j=0;j<i/C && i%C==0 && i;j++){
+                result += romanNumber(C);
+            }
+            if(i<C)
+                result += romanNumber(i);
+        }
+    }else if(value == D){
+        return 'D';
+    }else if(value > D && value < M){
+        
+    }else if(value == M){
+        return 'M';
+    }else if(value <= LIMIT){
+
+    }
+    return result;
 }
+var test = '00';
 document.getElementById('ex-code-24').innerHTML = '\nfunction romanNumber(n){\n' +
                                                     '}';
 document.getElementById('ex-usage-24').innerHTML = '\nromanNumber(n);';
-document.getElementById('ex-output-24').innerHTML = '\n' + romanNumber(123);
+document.getElementById('ex-output-24').innerHTML = '\n' + romanNumber(34);
+for(var i=0;i<501;i++){
+    console.log(i + ' : ' + romanNumber(i));
+}
 /* end: ex-24 */
