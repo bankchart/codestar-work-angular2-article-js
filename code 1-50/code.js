@@ -482,17 +482,17 @@ function romanNumber(n){
         for(var i=1;i<unitValue.length - indexWhile;i++)
             temp += '0';
         console.log(temp);
-        if(n<V){
+        if(temp<V){
             console.log(V);
-        }else if(n<X){
+        }else if(temp<X){
             console.log(X);
-        }else if(n<L){
+        }else if(temp<L){
             console.log(L);
-        }else if(n<C){
+        }else if(temp<C){
             console.log(C);
-        }else if(n<D){
+        }else if(temp<D){
             console.log(D);
-        }else if(n<M){
+        }else if(temp<M){
             console.log(M);
         }
         indexWhile++;
