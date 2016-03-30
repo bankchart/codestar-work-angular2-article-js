@@ -434,8 +434,8 @@ document.getElementById('ex-usage-23').innerHTML = '\nreverse(\'racecar\');';
 document.getElementById('ex-output-23').innerHTML = '\n' + isPalindrome('racecar');
 /* end: ex-23 */
 
-/* start: ex-24 */
-/*
+/* start: ex-24
+ref => http://www.onlineconversion.com/roman_numerals_advanced.htm
 I :	The numeral one. II is two, III is three. You seldom see IIII as 4,
     since IV can also mean 4, plus its shorter to write.
 
@@ -453,13 +453,54 @@ D :	The numeral 500.
 M :	The numeral 1000.
 */
 function romanNumber(n){
+    var value = n.toString();
+    var unitValue = [];
+    var result = '';
+    const I = 1;
+    const V = 5;
+    const X = 10;
+    const L = 50;
+    const C = 100;
+    const D = 500;
+    const M = 1000;
+    var indexWhile = 0;
+    var indexUnit = 0 ;
     var reg = /^[0-9]+$/;
+
     if(!reg.test(n))
         return '\'' + n + '\' ไม่ใช่ตัวเลขจำนวนเต็มที่มากกว่าศูนย์';
+    if(n>4999)
+        return '\''+ n +'\' มีค่ามากกว่า 4999 ไม่สามารถแปลงเป็นเลขโรมันได้ในฟังก์ชันนี้';
+    if(n<I)
+        return 'ควรมีค่ามากกว่าศูนย์';
 
+    for(var i=value.length-1;i>=0;i--)
+        unitValue.push(value[i]);
+
+    while(indexWhile < unitValue.length){
+        var temp = unitValue[indexUnit];
+        for(var i=1;i<unitValue.length - indexWhile;i++)
+            temp += '0';
+        console.log(temp);
+        if(n<V){
+            console.log(V);
+        }else if(n<X){
+            console.log(X);
+        }else if(n<L){
+            console.log(L);
+        }else if(n<C){
+            console.log(C);
+        }else if(n<D){
+            console.log(D);
+        }else if(n<M){
+            console.log(M);
+        }
+        indexWhile++;
+        indexUnit++;
+    }
 }
 document.getElementById('ex-code-24').innerHTML = '\nfunction romanNumber(n){\n' +
                                                     '}';
 document.getElementById('ex-usage-24').innerHTML = '\nromanNumber(n);';
-document.getElementById('ex-output-24').innerHTML = '\n' + romanNumber('1');
+document.getElementById('ex-output-24').innerHTML = '\n' + romanNumber(123);
 /* end: ex-24 */
