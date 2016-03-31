@@ -687,7 +687,22 @@ document.getElementById('ex-output-36').innerHTML = '\n[' + commonDivider(10, 15
 /* end: ex-37 */
 
 /* start: ex-38 */
-
+function common(a, b){
+    var temp_a = [];
+    var temp_b = [];
+    var result = [];
+    /* start: remove duplicate valueOfArray */
+    for(var i=0;i<a.length;i++)
+        temp_a.indexOf(a[i]) == -1 ? temp_a.push(a[i]) : '';
+    for(var i=0;i<b.length;i++)
+        temp_b.indexOf(b[i]) == -1 ? temp_b.push(b[i]) : '';
+    /* end: remove duplicate valueOfArray */
+    for(var i=0;i<temp_a.length;i++)
+        temp_b.indexOf(temp_a[i]) != -1 ? result.push(temp_a[i]) : '';
+    return result.sort(function(a, b){return a-b});
+}
+document.getElementById('ex-usage-38').innerHTML = '\ncommon([1, 2, 43, 1, 5, 2], [2, 5, 43, 9]);';
+document.getElementById('ex-output-38').innerHTML = '\n[' + common([1, 2, 43, 1, 5, 2], [2, 5, 43, 9]) + ']';
 /* end: ex-38 */
 
 /* start: ex-39 */

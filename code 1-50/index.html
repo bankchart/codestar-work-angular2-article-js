@@ -886,11 +886,27 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 38
+                    ข้อ 38 ให้เขียน function common(a, b) รับ array สองอันแล้วบอกว่ามีตัว
+                    ร่วมกันคืออะไรบ้าง เช่น common([1, 2, 3, 4], [2, 4, 6, 8]) ได้ผลลัพธ์เป็น [2, 4]
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-38'></code>
+                    <code id='ex-code-38'>
+                        function common(a, b){
+                            var temp_a = [];
+                            var temp_b = [];
+                            var result = [];
+                            /* start: remove duplicate valueOfArray */
+                            for(var i=0;i&#60;a.length;i++)
+                                temp_a.indexOf(a[i]) == -1 ? temp_a.push(a[i]) : '';
+                            for(var i=0;i&#60;b.length;i++)
+                                temp_b.indexOf(b[i]) == -1 ? temp_b.push(b[i]) : '';
+                            /* end: remove duplicate valueOfArray */
+                            for(var i=0;i&#60;temp_a.length;i++)
+                                temp_b.indexOf(temp_a[i]) != -1 ? result.push(temp_a[i]) : '';
+                            return result.sort(function(a, b){return a-b});
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
