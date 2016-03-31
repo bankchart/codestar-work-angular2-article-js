@@ -723,11 +723,18 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 31
+                    ข้อ 31 ให้เขียน function sumEx31(a) หาผลบวกของค่าใน array ที่ส่งเข้ามา
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-31'></code>
+                    <code id='ex-code-31'>
+                        function sumEx31(a){
+                            var result = 0;
+                            for(var i of a)
+                                result += i;
+                            return result;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
@@ -742,11 +749,15 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 32
+                    ข้อ 32 ให้เขียน function maximum(a) หาค่าที่มากที่สุดใน array ที่ส่งเข้ามา
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-32'></code>
+                    <code id='ex-code-32'>
+                        function maximum(a){
+                            return Math.max.apply(null, a);
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
@@ -799,11 +810,20 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 35
+                    ข้อ 35 ให้เขียน function dividerEx35(n) หาว่ามีตัวเลขอะไรบ้างระหว่าง 1 ถึง n
+                    ที่หาร n ได้ลงตัวส่งค่ากลับมาเป็น array เช่น divider(12) ได้ [1,2,3,4,6,12]
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-35'></code>
+                    <code id='ex-code-35'>
+                        function dividerEx35(n){
+                            var numbers = [];
+                            for(var i=1;i<=n;i++)
+                                if(n%i == 0)
+                                    numbers.push(i);
+                            return numbers;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
@@ -818,11 +838,21 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 36
+                    ข้อ 36 ให้เขียน function commonDivider(m, n) หาว่ามีตัวเลขอะไรบ้างที่
+                    หาร m และ n ได้ลงตัว เช่น commonDivider(10, 15) ได้ [1, 5]
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-36'></code>
+                    <code id='ex-code-36'>
+                        function commonDivider(m, n){
+                            var min_divider = m < n ? m : n;
+                            var result = [];
+                            for(var i=1;i<=min_divider;i++)
+                                if(m%i == 0 &amp;&amp; n%i == 0)
+                                    result.push(i);
+                            return result;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>

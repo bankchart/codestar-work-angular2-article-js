@@ -631,11 +631,22 @@ document.getElementById('ex-output-26').innerHTML = '\n' + englishMonth('มก�
 /* end: ex-30 */
 
 /* start: ex-31 */
-
+function sumEx31(a){
+    var result = 0;
+    for(var i of a)
+        result += i;
+    return result;
+}
+document.getElementById('ex-usage-31').innerHTML = '\nsumEx31([1, 2, 3, 4]);';
+document.getElementById('ex-output-31').innerHTML = '\n' + sumEx31([1, 2, 3, 4]);
 /* end: ex-31 */
 
 /* start: ex-32 */
-
+function maximum(a){
+    return Math.max.apply(null, a);
+}
+document.getElementById('ex-usage-32').innerHTML = '\nmaximum([4, 2, 6, 9, 4, 6, 9]);';
+document.getElementById('ex-output-32').innerHTML = '\n' + maximum([4, 2, 6, 9, 4, 6, 9]);
 /* end: ex-32 */
 
 /* start: ex-33 */
@@ -647,11 +658,28 @@ document.getElementById('ex-output-26').innerHTML = '\n' + englishMonth('มก�
 /* end: ex-34 */
 
 /* start: ex-35 */
-
+function dividerEx35(n){
+    var numbers = [];
+    for(var i=1;i<=n;i++)
+        if(n%i == 0)
+            numbers.push(i);
+    return numbers;
+}
+document.getElementById('ex-usage-35').innerHTML = '\ndividerEx35(12);';
+document.getElementById('ex-output-35').innerHTML = '\n[' + dividerEx35(12) + ']';
 /* end: ex-35 */
 
 /* start: ex-36 */
-
+function commonDivider(m, n){
+    var min_divider = m < n ? m : n;
+    var result = [];
+    for(var i=1;i<=min_divider;i++)
+        if(m%i == 0 && n%i == 0)
+            result.push(i);
+    return result;
+}
+document.getElementById('ex-usage-36').innerHTML = '\ncommonDivider(10, 15);';
+document.getElementById('ex-output-36').innerHTML = '\n[' + commonDivider(10, 15) + ']';
 /* end: ex-36 */
 
 /* start: ex-37 */
