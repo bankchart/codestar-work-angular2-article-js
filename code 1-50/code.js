@@ -582,11 +582,130 @@ function romanNumber(n){
     }
     return result;
 }
-document.getElementById('ex-code-24').innerHTML = '\nfunction romanNumber(n){\n' +
-                                                    '}';
-document.getElementById('ex-usage-24').innerHTML = '\nromanNumber(n);';
-document.getElementById('ex-output-24').innerHTML = '\n' + romanNumber(34);
-for(var i=3999;i<5000;i++){
-    console.log(i + ' : ' + romanNumber(i));
-}
+document.getElementById('ex-usage-24').innerHTML = '\nromanNumber(4999);';
+document.getElementById('ex-output-24').innerHTML = '\n' + romanNumber(4999);
 /* end: ex-24 */
+
+/* start: ex-25 */
+function romanToNumber(s){
+
+}
+/* end: ex-25 */
+
+/* start: ex-26 */
+function englishMonth(thaiMonth){
+    var months = {
+        'มกราคม' : 'January',
+        'กุมภาพันธ์' : 'February',
+        'มีนาคม' : 'March',
+        'เมษายน' : 'April',
+        'พฤษภาคม' : 'May',
+        'มิถุนายน' : 'June',
+        'กรกฎาคม' : 'July',
+        'สิงหาคม' : 'August',
+        'กันยายน' : 'September',
+        'ตุลาคม' : 'October',
+        'พฤศจิกายน' : 'November',
+        'ธันวาคม' : 'December'
+    };
+    return months[thaiMonth] == undefined ? 'not found.' : months[thaiMonth];
+}
+document.getElementById('ex-usage-26').innerHTML = '\nenglishMonth(\'มกราคม\');';
+document.getElementById('ex-output-26').innerHTML = '\n' + englishMonth('มกราคม');
+/* end: ex-26 */
+
+/* start: ex-27 */
+
+/* end: ex-27 */
+
+/* start: ex-28 */
+
+/* end: ex-28 */
+
+/* start: ex-29 */
+
+/* end: ex-29 */
+
+/* start: ex-30 */
+
+/* end: ex-30 */
+
+/* start: ex-31 */
+
+/* end: ex-31 */
+
+/* start: ex-32 */
+
+/* end: ex-32 */
+
+/* start: ex-33 */
+
+/* end: ex-33 */
+
+/* start: ex-34 */
+
+/* end: ex-34 */
+
+/* start: ex-35 */
+
+/* end: ex-35 */
+
+/* start: ex-36 */
+
+/* end: ex-36 */
+
+/* start: ex-37 */
+
+/* end: ex-37 */
+
+/* start: ex-38 */
+
+/* end: ex-38 */
+
+/* start: ex-39 */
+
+/* end: ex-39 */
+
+/* start: ex-40 */
+
+/* end: ex-40 */
+
+/* start: ex-41 */
+
+/* end: ex-41 */
+
+/* start: ex-42 */
+
+/* end: ex-42 */
+
+/* start: ex-43 */
+
+/* end: ex-43 */
+
+/* start: ex-44 */
+
+/* end: ex-44 */
+
+/* start: ex-45 */
+
+/* end: ex-45 */
+
+/* start: ex-46 */
+
+/* end: ex-46 */
+
+/* start: ex-47 */
+
+/* end: ex-47 */
+
+/* start: ex-48 */
+
+/* end: ex-48 */
+
+/* start: ex-49 */
+
+/* end: ex-49 */
+
+/* start: ex-50 */
+
+/* end: ex-50 */

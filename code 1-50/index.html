@@ -448,7 +448,138 @@
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-24'></code>
+                    <code id='ex-code-24'>
+                        function romanNumber(n){
+                            var value = n.toString();
+                            var unitValue = [];
+                            var result = '';
+                            const I = 1;
+                            const V = 5;
+                            const X = 10;
+                            const L = 50;
+                            const C = 100;
+                            const D = 500;
+                            const M = 1000;
+                            const LIMIT = 5000;
+                            var indexWhile = 0;
+                            var indexUnit = 0 ;
+                            var reg = /^[0-9]+$/;
+
+                            if(!reg.test(n))
+                                return '\'' + n + '\' ไม่ใช่ตัวเลขจำนวนเต็มที่มากกว่าศูนย์';
+                            if(n>4999)
+                                return '\''+ n +'\' มีค่ามากกว่า 4999 ไม่สามารถแปลงเป็นเลขโรมันได้ในฟังก์ชันนี้';
+                            if(n<I)
+                                return 'ควรมีค่ามากกว่าศูนย์';
+
+                            for(var i=0;i<value.length;i++){
+                                var temp = '';
+                                for(var j=1;j<value.length-i;j++)
+                                    temp += '0';
+                                unitValue.push(parseInt(value[i] + temp));
+                            }
+                            if(value == I){
+                                return 'I';
+                            }else if(value == V - I){
+                                return 'IV';
+                            }else if(value < V){
+                                for(var i=0;i<value;i++){
+                                    result += romanNumber(I);
+                                }
+                            }else if(value == V){
+                                return 'V';
+                            }else if(value == X - I){
+                                return 'IX';
+                            }else if(value > V &amp;&amp; value < X){
+                                result += 'V' + romanNumber(value-V);
+                            }else if(value == X){
+                                return 'X';
+                            }else if(value == L - X){
+                                return 'XL';
+                            }else if(value > X &amp;&amp; value < L){
+                                for(var i of unitValue){
+                                    if(i < 1)
+                                        continue;
+                                    for(var j=0;j<i/X &amp;&amp; i%X == 0;j++){
+                                        if(i > 30){
+                                            result += romanNumber(i);
+                                            break;
+                                        }else{
+                                            result += romanNumber(X);
+                                        }
+                                    }
+                                    if(i < X){
+                                        result += romanNumber(i);
+                                    }
+                                }
+                            }else if(value == L){
+                                return 'L';
+                            }else if(value == C - X){
+                                return 'XC';
+                            }else if(value > L &amp;&amp; value < C){ // between 50 - 100
+                                for(var i of unitValue){
+                                    if(i < 1)
+                                        continue;
+                                    var temp_result = i - L;
+                                    if(temp_result > 0 &amp;&amp; i < 90){
+                                        result += romanNumber(L);
+                                        result += romanNumber(temp_result);
+                                    }else{
+                                        result += romanNumber(i);
+                                    }
+                                }
+                            }else if(value == C){
+                                return 'C';
+                            }else if(value == D - C){
+                                return 'CD';
+                            }else if(value > C &amp;&amp; value < D){
+                                for(var i of unitValue){
+                                    if(i < 1)
+                                        continue;
+                                    if(i == D - C){
+                                        result += romanNumber(i);
+                                        continue;
+                                    }
+                                    for(var j=0;j<i/C &amp;&amp; i%C==0;j++){
+                                        result += romanNumber(C);
+                                    }
+                                    if(i<C)
+                                        result += romanNumber(i);
+                                }
+                            }else if(value == D){
+                                return 'D';
+                            }else if(value == M - C){
+                                return 'CM';
+                            }else if(value > D &amp;&amp; value < M){
+                                for(var i of unitValue){
+                                    if(i < 1)
+                                        continue;
+                                    var temp_result = i - D;
+                                    if(temp_result > 0 &amp;&amp; i < 900){
+                                        result += romanNumber(D);
+                                        result += romanNumber(temp_result);
+                                    }else{
+                                        //console.log(unitValue);
+                                        result += romanNumber(i);
+                                    }
+                                }
+                            }else if(value == M){
+                                return 'M';
+                            }else if(value > M &amp;&amp; value < LIMIT){
+                                for(var i of unitValue){
+                                    if(i < 1)
+                                        continue;
+                                    for(var j=0;j&#60;i/M &amp;&amp; i%M == 0;j++){
+                                        result += romanNumber(M);
+                                    }
+                                    if(i < M){
+                                        result += romanNumber(i);
+                                    }
+                                }
+                            }
+                            return result;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
@@ -459,6 +590,516 @@
                     <code id='ex-output-24'></code>
                 </pre>
             </div>
+
+            <div class='well'>
+                <h4>
+                    ข้อ 25 ให้เขียน function romanToNumber(s) รับตัวเลขโรมันมาแปลงเป็นเลขอารบิก เช่น romanToNumber('XVII') ได้ 17
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-25'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-25'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-25'></code>
+                </pre>
+            </div>
+
+            <div class='well'>
+                <h4>
+                    ข้อ 26 ให้เขียน function englishMonth() รับเดือนภาษาไทยมาแล้วแปลง
+                    เป็นภาษาอังกฤษ เช่น englishMonth('มกราคม') ได้ 'January' ออกมา
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-26'>
+                        function englishMonth(thaiMonth){
+                            var months = {
+                                'มกราคม' : 'January',
+                                'กุมภาพันธ์' : 'February',
+                                'มีนาคม' : 'March',
+                                'เมษายน' : 'April',
+                                'พฤษภาคม' : 'May',
+                                'มิถุนายน' : 'June',
+                                'กรกฎาคม' : 'July',
+                                'สิงหาคม' : 'August',
+                                'กันยายน' : 'September',
+                                'ตุลาคม' : 'October',
+                                'พฤศจิกายน' : 'November',
+                                'ธันวาคม' : 'December'
+                            };
+                            return months[thaiMonth] == undefined ? 'not found.' : months[thaiMonth];
+                        }
+                    </code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-26'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-26'></code>
+                </pre>
+            </div>
+
+            <div class='well'>
+                <h4>
+                    ข้อ 27
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-27'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-27'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-278'></code>
+                </pre>
+            </div>
+
+            <div class='well'>
+                <h4>
+                    ข้อ 28
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-28'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-28'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-28'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 29
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-29'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-29'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-29'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 30
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-30'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-30'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-30'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 31
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-31'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-31'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-31'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 32
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-32'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-32'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-32'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 33
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-33'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-33'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-33'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 34
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-34'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-34'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-34'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 35
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-35'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-35'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-35'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 36
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-36'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-36'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-36'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 37
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-37'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-37'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-37'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 38
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-38'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-38'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-38'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 39
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-39'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-39'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-39'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 40
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-40'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-40'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-40'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 41
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-41'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-41'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-41'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 42
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-42'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-42'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-42'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 43
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-43'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-43'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-43'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 44
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-44'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-44'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-44'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 45
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-45'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-45'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-45'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 46
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-46'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-46'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-46'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 47
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-47'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-47'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-47'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 48
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-48'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-48'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-48'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 49
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-49'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-49'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-49'></code>
+                </pre>
+            </div>
+
+
+            <div class='well'>
+                <h4>
+                    ข้อ 50
+                </h4>
+                <i>code :</i>
+                <pre>
+                    <code id='ex-code-50'></code>
+                </pre>
+                <i>usage :</i>
+                <pre>
+                    <code id='ex-usage-50'></code>
+                </pre>
+                <i>output :</i>
+                <pre>
+                    <code id='ex-output-50'></code>
+                </pre>
+            </div>
+
         </div>
     </body>
 </html>

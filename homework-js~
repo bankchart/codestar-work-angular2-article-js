@@ -30,8 +30,8 @@ https://codestar.work/article/js
 
 *1. ให้เขียน function reverse(s) รับ string เข้ามาแล้วส่งค่ากลับเป็น string ที่ย้อนกลับจากเดิม เช่น reverse("hello") ได้ "olleh" กลับมา
 *2. ให้เขียน function isAnagram(s, t) รับ string เข้ามา 2 อัน แล้วบอกว่ามันเป็น anagram กันหรือไม่ เช่น gallery และ allergy เป็น anagram กัน เพราะเป็นคำที่สลับตัวอักษรกัน
-3. ให้เขียน function isPalindrome(s) เพื่อหาว่า string ที่เข้ามาสามารถอ่านย้อนกลับ แล้วได้ข้อความเดิมหรือไม่ เช่น racecar อ่านย้อนกลับจะได้คำเดิม
-4. ให้เขียน function romanNumber(n) รับตัวเลขเข้ามาแปลงเป็นตัวเลขโรมัน เช่น romanNumber(19) ได้ 'XIX'
+*3. ให้เขียน function isPalindrome(s) เพื่อหาว่า string ที่เข้ามาสามารถอ่านย้อนกลับ แล้วได้ข้อความเดิมหรือไม่ เช่น racecar อ่านย้อนกลับจะได้คำเดิม
+*4. ให้เขียน function romanNumber(n) รับตัวเลขเข้ามาแปลงเป็นตัวเลขโรมัน เช่น romanNumber(19) ได้ 'XIX'
 5. ให้เขียน function romanToNumber(s) รับตัวเลขโรมันมาแปลงเป็นเลขอารบิก เช่น romanToNumber('XVII') ได้ 17
 6. ให้เขียน function englishMonth() รับเดือนภาษาไทยมาแล้วแปลงเป็นภาษาอังกฤษ เช่น englishMonth('มกราคม') ได้ 'January' ออกมา
 7. ใน web แห่งหนึ่งมีระบบป้องกันการ post ข้อความซ้ำโดยดูว่าข้อความเหมือนกันกี่เปอร์เซ็นต์ ให้เขียน function similar(s, t) แล้วบอกว่า string ทั้งสองตัวที่เข้ามาเหมือนกันกี่เปอร์เซ็นต์เช่น
