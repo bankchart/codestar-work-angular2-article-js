@@ -685,11 +685,21 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 29
+                    ข้อ 29 ให้เขียน function thaiNumber(x) แปลงเป็นตัวเลขไทย เช่น
+                    thaiNumber(23.85) ได้คำตอบเป็น '๒๓.๘๕'
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-29'></code>
+                    <code id='ex-code-29'>
+                        function thaiNumber(x){
+                            var numbers = ['๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'];
+                            var result = '';
+                            for(var i=0;i&#60;x.length;i++){
+                                result += numbers[x[i]];
+                            }
+                            return result;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
@@ -697,7 +707,7 @@
                 </pre>
                 <i>output :</i>
                 <pre>
-                    <code id='ex-output-29'></code>
+                    <code id='ex-output-29' style='font-size: 20px;'></code>
                 </pre>
             </div>
 
@@ -708,7 +718,20 @@
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-30'></code>
+                    <code id='ex-code-30'>
+                        function arabicNumber(x){
+                            var numbers = ['๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'];
+                            var result = '';
+                            for(var i=0;i&#60;x.length;i++){
+                                if(x[i] == '.'){
+                                    result += '.';
+                                    continue;
+                                }
+                                result += numbers.indexOf(x[i]);
+                            }
+                            return result;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>

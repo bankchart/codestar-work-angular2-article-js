@@ -623,11 +623,37 @@ document.getElementById('ex-output-26').innerHTML = '\n' + englishMonth('มก�
 /* end: ex-28 */
 
 /* start: ex-29 */
-
+function thaiNumber(x){
+    var numbers = ['๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'];
+    var result = '';
+    for(var i=0;i<x.length;i++){
+        if(x[i] == '.'){
+            result += '.';
+            continue;
+        }
+        result += numbers[x[i]];
+    }
+    return result;
+}
+document.getElementById('ex-usage-29').innerHTML = '\nthaiNumber(\'54.3\');';
+document.getElementById('ex-output-29').innerHTML = '\n' + thaiNumber('54.3');
 /* end: ex-29 */
 
 /* start: ex-30 */
-
+function arabicNumber(x){
+    var numbers = ['๐', '๑', '๒', '๓', '๔', '๕', '๖', '๗', '๘', '๙'];
+    var result = '';
+    for(var i=0;i<x.length;i++){
+        if(x[i] == '.'){
+            result += '.';
+            continue;
+        }
+        result += numbers.indexOf(x[i]);
+    }
+    return result;
+}
+document.getElementById('ex-usage-30').innerHTML = '\narabicNumber(\'๒๓.๗๖\');';
+document.getElementById('ex-output-30').innerHTML = '\n' + arabicNumber('๒๓.๗๖');
 /* end: ex-30 */
 
 /* start: ex-31 */
@@ -731,9 +757,8 @@ function thaiAreaEx41(a){
         w : w_area
     };
 }
-console.log(thaiAreaEx41(2100));
 document.getElementById('ex-usage-41').innerHTML = '\nthaiAreaEx41(2100);';
-document.getElementById('ex-output-41').innerHTML = '\n' + JSON.stringify(thaiAreaEx41(2100));
+document.getElementById('ex-output-41').innerHTML = '\n' + JSON.stringify(thaiAreaEx41(2500));
 /* end: ex-41 */
 
 /* start: ex-42 */
