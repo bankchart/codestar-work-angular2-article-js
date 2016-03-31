@@ -676,7 +676,19 @@ document.getElementById('ex-output-32').innerHTML = '\n' + maximum([4, 2, 6, 9, 
 /* end: ex-32 */
 
 /* start: ex-33 */
+function median(a){
+    a.sort(function(a, b){return a-b;});
+    var m = (a.length + 1)/2;
+    console.log(m);
+    if((a.length + 1)%2!=0){
+        var temp = Math.floor(m);
+        console.log('temp : ' + temp);
+        return (a.length + a[temp])/2;
+    }
 
+    return m;
+}
+console.log(median([1, 2, 3, 4]));
 /* end: ex-33 */
 
 /* start: ex-34 */
