@@ -959,11 +959,25 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 41
+                    ข้อ 41 ให้เขียน function thaiArea(a) รับขนาดที่ดินเป็นตารางเมตรเข้ามา
+                    แล้วบอกว่ามีขนาดกี่ไร่ กี่งาน กี่ตารางวา เช่น thaiArea(2100) ได้คำตอบคือ 1
+                    ไร่ 1 งาน 25 ตารางวา หรือ {r: 1, n: 1, w: 25}
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-41'></code>
+                    <code id='ex-code-41'>
+                        function thaiAreaEx41(a){
+                            var r_area = Math.floor(a/1600);
+                            var temp1 = a - r_area*1600;
+                            var n_area = Math.floor(temp1/400);
+                            var w_area = ((temp1/400) - n_area)*100;
+                            return {
+                                r : r_area,
+                                n : n_area,
+                                w : w_area
+                            };
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>

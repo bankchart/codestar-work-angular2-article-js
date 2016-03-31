@@ -714,7 +714,27 @@ document.getElementById('ex-output-38').innerHTML = '\n[' + common([1, 2, 43, 1,
 /* end: ex-40 */
 
 /* start: ex-41 */
-
+/*
+    1 งาน = 100 ตารางวา
+    1 ไร่ = 400 ตารางวา
+    1 ไร่ = 4 งาน
+    1 ไร่ = 1600 ตาราเมตร
+    1/0.25*(1/1600*500) = x
+*/
+function thaiAreaEx41(a){
+    var r_area = Math.floor(a/1600);
+    var temp1 = a - r_area*1600;
+    var n_area = Math.floor(temp1/400);
+    var w_area = ((temp1/400) - n_area)*100;
+    return {
+        r : r_area,
+        n : n_area,
+        w : w_area
+    };
+}
+console.log(thaiAreaEx41(2100));
+document.getElementById('ex-usage-41').innerHTML = '\nthaiAreaEx41(2100);';
+document.getElementById('ex-output-41').innerHTML = '\n' + JSON.stringify(thaiAreaEx41(2100));
 /* end: ex-41 */
 
 /* start: ex-42 */
