@@ -718,11 +718,38 @@ document.getElementById('ex-output-38').innerHTML = '\n[' + common([1, 2, 43, 1,
 /* end: ex-41 */
 
 /* start: ex-42 */
-
+function findCode(city){
+    var data = [
+        { city: 'เมืองนนทบุรี', code: '11000' },
+        { city: 'บางบัวทอง',  code: '11110' },
+        { city: 'ปากเกร็ด',   code: '11120' },
+        { city: 'บางกรวย',   code: '11130' },
+        { city: 'บางใหญ่',    code: '11140' },
+        { city: 'ไทรน้อย',    code: '11150' }
+    ];
+    for(var i of data)
+        if(i.city == city)
+            return i.code;
+    return 'not found.';
+}
+document.getElementById('ex-usage-42').innerHTML = '\nfindCode(\'ไทรน้อย\');';
+document.getElementById('ex-output-42').innerHTML = '\n' + findCode('ไทรน้อย');
 /* end: ex-42 */
 
 /* start: ex-43 */
-
+function getCode(city){
+    var data = {
+        'เมืองนนทบุรี' : '11000',
+        'บางบัวทอง' : '11110',
+        'ปากเกร็ด' : '11120',
+        'บางกรวย' : '11130',
+        'บางใหญ่' : '11140',
+        'ไทรน้อย' : '11150'
+    };
+    return data[city] == undefined ? 'not found.' : data[city];
+}
+document.getElementById('ex-usage-43').innerHTML = '\ngetCode(\'บางใหญ่\');';
+document.getElementById('ex-output-43').innerHTML = '\n' + getCode('บางใหญ่');
 /* end: ex-43 */
 
 /* start: ex-44 */

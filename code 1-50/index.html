@@ -978,11 +978,36 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 42
+                    ข้อ 42 กำหนดให้มีข้อมูลคือ<br/>
+                    var data = [<br/>
+                    	&nbsp;&nbsp;&nbsp;{ city: 'เมืองนนทบุรี', code: '11000' },<br/>
+                    	&nbsp;&nbsp;&nbsp;{ city: 'บางบัวทอง',  code: '11110' },<br/>
+                    	&nbsp;&nbsp;&nbsp;{ city: 'ปากเกร็ด',   code: '11120' },<br/>
+                    	&nbsp;&nbsp;&nbsp;{ city: 'บางกรวย',   code: '11130' },<br/>
+                    	&nbsp;&nbsp;&nbsp;{ city: 'บางใหญ่',    code: '11140' },<br/>
+                    	&nbsp;&nbsp;&nbsp;{ city: 'ไทรน้อย',    code: '11150' }<br/>
+                    ];<br/>
+                    ใช้เขียน function findCode(city) รับชื่ออำเภอเข้ามาแล้วหาว่า รหัสไปรษณีย์
+                    ของอำเภอนั้นคืออะไร ถ้าไม่เจอให้ตอบว่า not found
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-42'></code>
+                    <code id='ex-code-42'>
+                        function findCode(city){
+                            var data = [
+                                { city: 'เมืองนนทบุรี', code: '11000' },
+                                { city: 'บางบัวทอง',  code: '11110' },
+                                { city: 'ปากเกร็ด',   code: '11120' },
+                                { city: 'บางกรวย',   code: '11130' },
+                                { city: 'บางใหญ่',    code: '11140' },
+                                { city: 'ไทรน้อย',    code: '11150' }
+                            ];
+                            for(var i of data)
+                                if(i.city == city)
+                                    return i.code;
+                            return 'not found.';
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
@@ -997,11 +1022,35 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 43
+                    ข้อ 43 กำหนดให้มีข้อมูลคือ<br/>
+
+                    var data = {<br/>
+                    	&nbsp;&nbsp;&nbsp;'เมืองนนทบุรี' : '11000',<br/>
+                    	&nbsp;&nbsp;&nbsp;'บางบัวทอง'  : '11110',<br/>
+                    	&nbsp;&nbsp;&nbsp;'ปากเกร็ด'   : '11120',<br/>
+                    	&nbsp;&nbsp;&nbsp;'บางกรวย'   : '11130',<br/>
+                    	&nbsp;&nbsp;&nbsp;'บางใหญ่'    : '11140',<br/>
+                    	&nbsp;&nbsp;&nbsp;'ไทรน้อย'    : '11150'<br/>
+                    };<br/>
+
+                    ใช้เขียน function getCode(city) รับชื่ออำเภอเข้ามาแล้วหาว่า รหัสไปรษณีย์
+                    ของอำเภอนั้นคืออะไร ถ้าไม่เจอให้ตอบว่า not found
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-43'></code>
+                    <code id='ex-code-43'>
+                        function getCode(city){
+                            var data = {
+                                'เมืองนนทบุรี' : '11000',
+                                'บางบัวทอง' : '11110',
+                                'ปากเกร็ด' : '11120',
+                                'บางกรวย' : '11130',
+                                'บางใหญ่' : '11140',
+                                'ไทรน้อย' : '11150'
+                            };
+                            return data[city] == undefined ? 'not found.' : data[city];
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
