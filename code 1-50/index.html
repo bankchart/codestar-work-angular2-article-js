@@ -1079,11 +1079,45 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 44
+                    ข้อ 44 ให้เขียน function sortMedal(list) รับข้อมูลเข้ามาเป็นทีมและ
+                    เหรียญรางวัล ให้เรียงข้อมูลจาก gold, silver, bronze เช่น<br/>
+
+                        sort([<br/>
+                        	{name: 'Bangkok',    gold: 5, silver: 2, bronze: 3},<br/>
+                        	{name: 'Nonthaburi', gold: 3, silver: 4, bronze: 4},<br/>
+                        	{name: 'Supanburi',  gold: 3, silver: 5, bronze: 4}<br/>
+                        ]);<br/>
+
+                    ได้ผลเป็น<br/>
+
+                        [<br/>
+                        	{name: 'Bangkok',    gold: 5, silver: 2, bronze: 3},<br/>
+                        	{name: 'Supanburi',  gold: 3, silver: 5, bronze: 4},<br/>
+                        	{name: 'Nonthaburi', gold: 3, silver: 4, bronze: 4}<br/>
+                        ]<br/>
+
+                    Supanburi และ Nonthaburi ได้เหรียญทองเท่ากัน ต้องไปดูเหรียญเงินแทน
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-44'></code>
+                    <code id='ex-code-44'>
+                        function sortMedal(list){
+                            list.sort(
+                                function(a, b){
+                                    if(b.gold == a.gold)
+                                        if(b.silver == a.silver)
+                                            if(b.bronze == a.bronze)
+                                                return b.gold - a.gold;
+                                            else
+                                                return b.bronze - a.bronze;
+                                        else
+                                            return b.silver - a.silver;
+                                    else
+                                        return b.gold - a.gold;
+                                }
+                            );
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>

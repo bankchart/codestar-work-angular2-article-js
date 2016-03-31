@@ -719,7 +719,6 @@ document.getElementById('ex-output-38').innerHTML = '\n[' + common([1, 2, 43, 1,
     1 ไร่ = 400 ตารางวา
     1 ไร่ = 4 งาน
     1 ไร่ = 1600 ตาราเมตร
-    1/0.25*(1/1600*500) = x
 */
 function thaiAreaEx41(a){
     var r_area = Math.floor(a/1600);
@@ -773,7 +772,36 @@ document.getElementById('ex-output-43').innerHTML = '\n' + getCode('บางใ
 /* end: ex-43 */
 
 /* start: ex-44 */
-
+function sortMedal(list){
+    list.sort(
+        function(a, b){
+            if(b.gold == a.gold)
+                if(b.silver == a.silver)
+                    if(b.bronze == a.bronze)
+                        return b.gold - a.gold;
+                    else
+                        return b.bronze - a.bronze;
+                else
+                    return b.silver - a.silver;
+            else
+                return b.gold - a.gold;
+        }
+    );
+    return list;
+}
+document.getElementById('ex-usage-44').innerHTML = '\nsortMedal([\n' +
+                                                '\t{name: \'Bangkok\', gold: 5, silver: 2, bronze: 3},\n' +
+                                                '\t{name: \'Nonthaburi\', gold: 3, silver: 4, bronze: 4},\n' +
+                                                '\t{name: \'Supanburi\', gold: 3, silver: 5, bronze: 4}\n' +
+                                            ']);';
+document.getElementById('ex-output-44').innerHTML = '\n' + JSON.stringify(
+    sortMedal([
+        {name: 'Bangkok', gold: 5, silver: 2, bronze: 3},
+        {name: 'Nonthaburi', gold: 3, silver: 4, bronze: 4},
+        {name: 'Supanburi', gold: 3, silver: 5, bronze: 4}
+    ])
+    , null, '\t'
+);
 /* end: ex-44 */
 
 /* start: ex-45 */
