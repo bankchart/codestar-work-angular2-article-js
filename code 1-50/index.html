@@ -801,7 +801,16 @@
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-33'></code>
+                    <code id='ex-code-33'>
+                        function median(a){
+                            a.sort(function(a, b){return a-b;});
+                            console.log(a);
+                            if(a.length%2!=0)
+                                return a[(a.length + 1)/2 - 1];
+                            else
+                                return (a[a.length/2-1] + a[a.length/2])/2 ;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>

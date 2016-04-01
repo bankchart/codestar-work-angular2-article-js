@@ -678,17 +678,14 @@ document.getElementById('ex-output-32').innerHTML = '\n' + maximum([4, 2, 6, 9, 
 /* start: ex-33 */
 function median(a){
     a.sort(function(a, b){return a-b;});
-    var m = (a.length + 1)/2;
-    console.log(m);
-    if((a.length + 1)%2!=0){
-        var temp = Math.floor(m);
-        console.log('temp : ' + temp);
-        return (a.length + a[temp])/2;
-    }
-
-    return m;
+    console.log(a);
+    if(a.length%2!=0)
+        return a[(a.length + 1)/2 - 1];
+    else
+        return (a[a.length/2-1] + a[a.length/2])/2 ;
 }
-console.log(median([1, 2, 3, 4]));
+document.getElementById('ex-usage-33').innerHTML = '\nmedian([4, 20, 7, 12, 90, 4, 6, 9]);';
+document.getElementById('ex-output-33').innerHTML = '\n' + median([4, 20, 7, 12, 90, 4, 6, 9]);
 /* end: ex-33 */
 
 /* start: ex-34 */
