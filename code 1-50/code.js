@@ -839,7 +839,30 @@ document.getElementById('ex-output-44').innerHTML = '\n' + JSON.stringify(
 /* end: ex-44 */
 
 /* start: ex-45 */
-
+function dispense(n){
+    console.log('1000 => ' + n%1000);
+    console.log('500 => ' + n%500);
+    console.log('100 => ' + n%100);
+    if(n%100 > 0)
+        return 'ระบุจำนวนเงินไม่ถูกต้อง';
+    var temp = n;
+    var result = [
+            {denomination: 1000, amount: 0},
+            {denomination: 500, amount: 0},
+            {denomination: 100, amount: 0},
+    ];
+    var money = [1000, 500, 100];
+    var index_money = 0;
+    for(var i of result){
+        i.amount = (temp - temp%money[index_money])/money[index_money];
+        temp = temp%money[index_money];
+        index_money++;
+    }
+    return result;
+}
+console.log();
+document.getElementById('ex-usage-45').innerHTML = '\ndispense(1700);';
+document.getElementById('ex-output-45').innerHTML = '\n' + JSON.stringify(dispense(1700), null, '\t');
 /* end: ex-45 */
 
 /* start: ex-46 */
