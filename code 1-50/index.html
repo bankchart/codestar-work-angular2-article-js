@@ -825,11 +825,35 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 34
+                    ข้อ 34 ฐานนิยม หรือ mode คือข้อมูลที่พบมากที่สุด เช่น [3, 2, 3, 1, 4]
+                    มีค่า mode คือ 3 ให้เขียน function mode(a) หาว่า mode ของ array ที่ส่งเข้าไปคืออะไร
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-34'></code>
+                    <code id='ex-code-34'>
+                        function mode(a){
+                            a.sort(function(a, b){return a-b});
+                            var temp = [], result = [];
+                            var maxValue = 0;
+                            temp[a[0]] = 1;
+
+                            for(var i=1;i&#60;a.length;i++)
+                                    if(temp[a[i]] == undefined)
+                                        temp[a[i]] = 1;
+                                    else
+                                        temp[a[i]]++;
+
+                            for(var i in temp)
+                                if(maxValue < temp[i])
+                                    maxValue = temp[i];
+
+                            for(var i in temp)
+                                if(maxValue == temp[i])
+                                    result.push(i);
+
+                            return result;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
@@ -901,11 +925,22 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 37
+                    ข้อ 37 บริษัทขุดเจาะน้ำมันได้สำรวจน้ำมันดิบตามบ่อต่างๆว่ามีประมาณกี่หน่วย
+                    บ่อน้ำมันเรียงต่อกันไปเรื่อยๆ ถ้าเข้าไปเจาะน้ำมันที่บ่อไหน บ่อที่อยู่ติดกันก็จะขุดไม่ได้
+                    เช่น ถ้าเข้าไปขุดบ่อที่ 3 บ่อที่ 2 และ 4 ก็จะขุดไม่ได้ ให้เขียน function maximum(a)
+                    รับ array ของปริมาณน้ำมันดิบที่มีในแต่ละบ่อ แล้วหาว่าปริมาณน้ำมันดิบที่สามารถขุดได้คือ
+                    กี่หน่วย เช่น [3, 2, 4, 8, 5] ได้น้ำมันดิบมากที่สุดคือ 3 + 4 + 5 = 12
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-37'></code>
+                    <code id='ex-code-37'>
+                        function maximumEx37(a){
+                            var sum = 0;
+                            for(var i=0;i&#60;a.length;i+=2)
+                                sum += a[i];
+                            return sum;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>

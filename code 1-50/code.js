@@ -688,7 +688,31 @@ document.getElementById('ex-output-33').innerHTML = '\n' + median([4, 20, 7, 12,
 /* end: ex-33 */
 
 /* start: ex-34 */
+function mode(a){
+    a.sort(function(a, b){return a-b});
+    var temp = [], result = [];
+    var maxValue = 0;
+    temp[a[0]] = 1;
 
+    for(var i=1;i<a.length;i++)
+            if(temp[a[i]] == undefined)
+                temp[a[i]] = 1;
+            else
+                temp[a[i]]++;
+
+    for(var i in temp)
+        if(maxValue < temp[i])
+            maxValue = temp[i];
+
+    for(var i in temp)
+        if(maxValue == temp[i])
+            result.push(i);
+            
+    return result;
+}
+mode([1, 3, 2, 3, 1]);
+document.getElementById('ex-usage-34').innerHTML = '\nmode([1, 3, 2, 3, 1]);';
+document.getElementById('ex-output-34').innerHTML = '\n' + mode([1, 3, 2, 3, 1]);
 /* end: ex-34 */
 
 /* start: ex-35 */
@@ -717,7 +741,14 @@ document.getElementById('ex-output-36').innerHTML = '\n[' + commonDivider(10, 15
 /* end: ex-36 */
 
 /* start: ex-37 */
-
+function maximumEx37(a){
+    var sum = 0;
+    for(var i=0;i<a.length;i+=2)
+        sum += a[i];
+    return sum;
+}
+document.getElementById('ex-usage-37').innerHTML = '\nmaximumEx37([3, 2, 4, 8, 5]);';
+document.getElementById('ex-output-37').innerHTML = '\n' + maximumEx37([3, 2, 4, 8, 5]);
 /* end: ex-37 */
 
 /* start: ex-38 */
@@ -953,7 +984,6 @@ function workingHour(a){
         for(j of a){
             if(j.name == i.name){
                 var times = j.time.split(':');
-                console.log(times);
                 var hr = parseInt(times[0]);
                 var min = parseInt(times[1]);
                 var sec = parseInt(times[2]);
