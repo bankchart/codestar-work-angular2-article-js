@@ -593,11 +593,26 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 25 ให้เขียน function romanToNumber(s) รับตัวเลขโรมันมาแปลงเป็นเลขอารบิก เช่น romanToNumber('XVII') ได้ 17
+                    ข้อ 25 ให้เขียน function romanToNumber(s) รับตัวเลขโรมันมาแปลงเป็น
+                    เลขอารบิก เช่น romanToNumber('XVII') ได้ 17
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-25'></code>
+                    <code id='ex-code-25'>
+                        function romanToNumber(s) {
+                            var result = 0;
+                            var compare = { I:1, V:5, X:10, L:50, C:100, D:500, M:1000 };
+                            var i = s.length - 1;
+                            while (i>=0){
+                                if ( compare[s[i]] < compare[s[i+1]] )
+                                    result -= compare[s[i]];
+                                else
+                                    result += compare[s[i]];
+                                i--;
+                            }
+                            return result;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>

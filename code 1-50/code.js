@@ -1,4 +1,4 @@
-//25 27 40 50 51
+//27 40 50 51
 /* start: ex-1 */
 function meterToFoot(x){
     return 3.28084 * x;
@@ -588,9 +588,22 @@ document.getElementById('ex-output-24').innerHTML = '\n' + romanNumber(4999);
 /* end: ex-24 */
 
 /* start: ex-25 */
-function romanToNumber(s){
-
+function romanToNumber(s) {
+    var result = 0;
+    var compare = { I:1, V:5, X:10, L:50, C:100, D:500, M:1000 };
+    var i = s.length - 1;
+    while (i>=0){
+        if ( compare[s[i]] < compare[s[i+1]] )
+            result -= compare[s[i]];
+        else
+            result += compare[s[i]];
+        i--;
+    }
+    return result;
 }
+console.log(romanToNumber('XVII'));
+document.getElementById('ex-usage-25').innerHTML = '\nromanToNumber(\'XVII\');';
+document.getElementById('ex-output-25').innerHTML = '\n' + romanToNumber('XVII');
 /* end: ex-25 */
 
 /* start: ex-26 */
