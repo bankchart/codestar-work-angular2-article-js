@@ -955,11 +955,24 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 39
+                    ข้อ 39 ให้เขียน function factor(n) รับเลขจำนวนเต็มเข้ามาแล้วบอกว่า
+                    มาจากเลขอะไรคูณกัน เช่น factor(18) = 2 * 3 * 3 ถ้าตอบว่า 2 * 9
+                    ยังไม่ถูกเพราะ 9 แยกออกมาเป็น 3 * 3 ได้อีก
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-39'></code>
+                    <code id='ex-code-39'>
+                        function factor(n){
+                            var result = [];
+                            for(var i=1;i<=n;i++)
+                                if(n%i==0){
+                                    result.push(i);
+                                    n /= i;
+                                    i = 1;
+                                }
+                            return result;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>

@@ -678,7 +678,6 @@ document.getElementById('ex-output-32').innerHTML = '\n' + maximum([4, 2, 6, 9, 
 /* start: ex-33 */
 function median(a){
     a.sort(function(a, b){return a-b;});
-    console.log(a);
     if(a.length%2!=0)
         return a[(a.length + 1)/2 - 1];
     else
@@ -741,7 +740,18 @@ document.getElementById('ex-output-38').innerHTML = '\n[' + common([1, 2, 43, 1,
 /* end: ex-38 */
 
 /* start: ex-39 */
-
+function factor(n){
+    var result = [];
+    for(var i=1;i<=n;i++)
+        if(n%i==0){
+            result.push(i);
+            n /= i;
+            i = 1;
+        }
+    return result;
+}
+document.getElementById('ex-usage-39').innerHTML = '\nfactor(89);';
+document.getElementById('ex-output-39').innerHTML = '\n' + factor(89);
 /* end: ex-39 */
 
 /* start: ex-40 */
@@ -840,9 +850,6 @@ document.getElementById('ex-output-44').innerHTML = '\n' + JSON.stringify(
 
 /* start: ex-45 */
 function dispense(n){
-    console.log('1000 => ' + n%1000);
-    console.log('500 => ' + n%500);
-    console.log('100 => ' + n%100);
     if(n%100 > 0)
         return 'ระบุจำนวนเงินไม่ถูกต้อง';
     var temp = n;
@@ -860,7 +867,6 @@ function dispense(n){
     }
     return result;
 }
-console.log();
 document.getElementById('ex-usage-45').innerHTML = '\ndispense(1700);';
 document.getElementById('ex-output-45').innerHTML = '\n' + JSON.stringify(dispense(1700), null, '\t');
 /* end: ex-45 */
