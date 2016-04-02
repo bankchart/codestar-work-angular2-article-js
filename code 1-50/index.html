@@ -1462,11 +1462,72 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 49
+                    ข้อ 49 บริษัทแห่งหนึ่ง ใช้ระบบติดตามพิกัดพนักงานผ่านทาง GPS ทุกครั้งที่มีปัญหา
+                    เกิดขึ้นในที่ต่างๆ จะมีการแจ้งพิกัดเข้ามา ให้เขียน function findNearest()
+                    เพื่อค้นหาพนักงานที่ใกล้ที่สุด เช่น<br/><br/>
+                    <pre>
+                            findNearest(
+                            {
+                            	location: [13.776196, 100.443564],
+                            	users: [
+                            		{ name: 'James', location: [13.778918, 100.476235]},
+                            		{ name: 'John' , location: [13.781090, 100.447631]}
+                            	]
+                            }
+                            );
+
+                            ได้ผลลัพธ์เป็น John เพราะเขาอยู่ใกล้กว่า ให้ใช้ function หาระยะทางตามนี้
+
+                            function distance(lat1, lon1, lat2, lon2) {
+                            	lat1 = parseFloat(lat1);
+                            	lon1 = parseFloat(lon1);
+                            	lat2 = parseFloat(lat2);
+                            	lon2 = parseFloat(lon2);
+                            	var p = 0.017453292519943295;           // Math.PI / 180
+                            	var c = Math.cos;
+                            	var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+                            		c(lat1 * p) * c(lat2 * p) *
+                            		(1 - c((lon2 - lon1) * p)) / 2;
+                            	return 12742 * Math.asin(Math.sqrt(a)); // 2 * 6371 km
+                            }
+                    </pre>
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-49'></code>
+                    <code id='ex-code-49'>
+                        function findNearest(data){
+                            var distanceFn = function(lat1, lon1, lat2, lon2) {
+                                    lat1 = parseFloat(lat1);
+                                    lon1 = parseFloat(lon1);
+                                    lat2 = parseFloat(lat2);
+                                    lon2 = parseFloat(lon2);
+                                    var p = 0.017453292519943295;           // Math.PI / 180
+                                    var c = Math.cos;
+                                    var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+                                        c(lat1 * p) * c(lat2 * p) *
+                                        (1 - c((lon2 - lon1) * p)) / 2;
+                                    return 12742 * Math.asin(Math.sqrt(a)); // 2 * 6371 km
+                                }
+                            latitude_1 = data.location[0];
+                            longitude_1 = data.location[1];
+                            var temp = [];
+                            for(var i of data.users){
+                                temp.push({
+                                    name : i.name,
+                                    distance : distanceFn(latitude_1, longitude_1,
+                                                i.location[0], i.location[1]).toFixed(2)
+                                });
+                            }
+                            var min = temp[0].distance, index = -1;
+                            for(var i=1;i&#60;temp.length;i++){
+                                if(temp[i].distance < min){
+                                    min = temp[i].distance;
+                                    index = i;
+                                }
+                            }
+                            return temp[index].name;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>

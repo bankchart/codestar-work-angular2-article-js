@@ -707,7 +707,7 @@ function mode(a){
     for(var i in temp)
         if(maxValue == temp[i])
             result.push(i);
-            
+
     return result;
 }
 mode([1, 3, 2, 3, 1]);
@@ -1037,7 +1037,56 @@ document.getElementById('ex-output-48').innerHTML = '\n' + JSON.stringify(workin
 /* end: ex-48 */
 
 /* start: ex-49 */
-
+function findNearest(data){
+    var distanceFn = function(lat1, lon1, lat2, lon2) {
+            lat1 = parseFloat(lat1);
+            lon1 = parseFloat(lon1);
+            lat2 = parseFloat(lat2);
+            lon2 = parseFloat(lon2);
+            var p = 0.017453292519943295;           // Math.PI / 180
+            var c = Math.cos;
+            var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+                c(lat1 * p) * c(lat2 * p) *
+                (1 - c((lon2 - lon1) * p)) / 2;
+            return 12742 * Math.asin(Math.sqrt(a)); // 2 * 6371 km
+        }
+    latitude_1 = data.location[0];
+    longitude_1 = data.location[1];
+    var temp = [];
+    for(var i of data.users){
+        temp.push({
+            name : i.name,
+            distance : distanceFn(latitude_1, longitude_1,
+                        i.location[0], i.location[1]).toFixed(2)
+        });
+    }
+    var min = temp[0].distance, index = -1;
+    for(var i=1;i<temp.length;i++){
+        if(temp[i].distance < min){
+            min = temp[i].distance;
+            index = i;
+        }
+    }
+    return temp[index].name;
+}
+document.getElementById('ex-usage-49').innerHTML = '\nfindNearest(\n' +
+                                            '{\n' +
+                                                '\tlocation: [13.776196, 100.443564],\n' +
+                                                '\tusers: [\n' +
+                                                    '\t\t{ name: \'James\', location: [13.778918, 100.476235]},\n' +
+                                                    '\t\t{ name: \'John\' , location: [13.781090, 100.447631]}\n' +
+                                                '\t]\n' +
+                                            '}\n' +
+                                            ');';
+document.getElementById('ex-output-49').innerHTML = '\n' + findNearest(
+    {
+        location: [13.776196, 100.443564],
+        users: [
+            { name: 'James', location: [13.778918, 100.476235]},
+            { name: 'John' , location: [13.781090, 100.447631]}
+        ]
+    }
+);
 /* end: ex-49 */
 
 /* start: ex-50 */
