@@ -1287,11 +1287,36 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 47
+                    ข้อ 47 ให้เขียน function closest(points) รับ array ของจุด (x,y)
+                    เข้ามา แล้วหาว่าจุดที่อยู่ใกล้กันที่สุดมีระยะทางกี่หน่วย เช่น
+                    <br/>
+                    closest(<br/>
+                    	[<br/>
+                    		{x: 0,y: 0},<br/>
+                    		{x:10,y:10},<br/>
+                    		{x: 1,y: 1}<br/>
+                    	]<br/>
+                    )<br/>
+
+                    ได้คำตอบคือ 1.414
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-47'></code>
+                    <code id='ex-code-47'>
+                        function closest(points){
+                            var minDistance = undefined;
+                            for(var i of points){
+                                for(var j=0;j&#60;points.length;j++){
+                                    if(j==points.indexOf(i))
+                                        continue;
+                                    var tempDistance = distance(i.x, i.y, points[j].x, points[j].y);
+                                    if(minDistance == undefined || minDistance > tempDistance)
+                                        minDistance = tempDistance;
+                                }
+                            }
+                            return minDistance.toFixed(3);
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>

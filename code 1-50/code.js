@@ -910,7 +910,22 @@ document.getElementById('ex-output-46').innerHTML = '\n' + minimumStamp([1, 17, 
 /* end: ex-46 */
 
 /* start: ex-47 */
-
+/* distance(x1, y1, x2, y2)*/
+function closest(points){
+    var minDistance = undefined;
+    for(var i of points){
+        for(var j=0;j<points.length;j++){
+            if(j==points.indexOf(i))
+                continue;
+            var tempDistance = distance(i.x, i.y, points[j].x, points[j].y);
+            if(minDistance == undefined || minDistance > tempDistance)
+                minDistance = tempDistance;
+        }
+    }
+    return minDistance.toFixed(3);
+}
+document.getElementById('ex-usage-47').innerHTML = '\nclosest([{x:0, y:0}, {x:10, y:10}, {x:1, y:1}];';
+document.getElementById('ex-output-47').innerHTML = '\n' + closest([{x:0, y:0}, {x:10, y:10}, {x:1, y:1}]);
 /* end: ex-47 */
 
 /* start: ex-48 */
