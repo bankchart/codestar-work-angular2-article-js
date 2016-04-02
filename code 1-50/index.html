@@ -1229,11 +1229,47 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 46
+                    ข้อ 46 ถ้ามี stamp ราคา 1 บาท 4 บาท 5 บาท อยู่ไม่จำกัดจำนวน ในการขาย
+                    stamp เพื่อติดจดหมาย ต้องการขาย stamp ให้น้อยที่สุด เช่น ต้องการติดจดหมาย 8
+                    บาท ถ้าติดเป็น 5 + 1 + 1 + 1 ต้องใช้ 4 ดวง แต่ถ้าติดเป็น 4 + 4 ใช้แค่ 2 ดวงเท่านั้น
+                    ให้เขียน function minimumStamp(s, v) รับ array ของ stamp เช่น [1, 4, 5]
+                    ให้หาว่าต้องใช้ stamp น้อยที่สุดกี่ดวงเพื่อรวมกันเป็นมูลค่าที่กำหนด จากตัวอย่าง
+                    minimumStamp([1,4,5], 8) ได้คำตอบเป็น 2
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-46'></code>
+                    <code id='ex-code-46'>
+                        function minimumStamp(s, v){
+                            var temp = [];
+                            var result = [];
+                            var min = balance%s[s.length];
+                            var balance = v;
+                            var countStamp = 0;
+                            var i = s.length - 1;
+                            while(balance>0){
+                                for(var j=0;j&#60;s.length;j++){
+                                    if(s.indexOf(v) != -1){
+                                        i = s.indexOf(v);
+                                        break;
+                                    }
+                                    if(balance%s[j]!=0){
+                                        if(min > balance%s[j])
+                                            i = j;
+                                    }
+                                }
+                                temp[s[i]] = Math.floor(balance/s[i]);
+                                balance -= temp[s[i]]*s[i];
+                                countStamp += temp[s[i]];
+                                i--;
+                            }
+                            for(var index in temp)
+                                result.push(
+                                    {'stamp' : index , 'count' : temp[index]}
+                                );
+                            //console.log(JSON.stringify(result, null, '\t'));
+                            return countStamp;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>

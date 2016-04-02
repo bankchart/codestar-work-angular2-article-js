@@ -872,7 +872,38 @@ document.getElementById('ex-output-45').innerHTML = '\n' + JSON.stringify(dispen
 /* end: ex-45 */
 
 /* start: ex-46 */
-
+function minimumStamp(s, v){
+    var temp = [];
+    var result = [];
+    var min = balance%s[s.length];
+    var balance = v;
+    var countStamp = 0;
+    var i = s.length - 1;
+    while(balance>0){
+        for(var j=0;j<s.length;j++){
+            if(s.indexOf(v) != -1){
+                i = s.indexOf(v);
+                break;
+            }
+            if(balance%s[j]!=0){
+                if(min > balance%s[j])
+                    i = j;
+            }
+        }
+        temp[s[i]] = Math.floor(balance/s[i]);
+        balance -= temp[s[i]]*s[i];
+        countStamp += temp[s[i]];
+        i--;
+    }
+    for(var index in temp)
+        result.push(
+            {'stamp' : index , 'count' : temp[index]}
+        );
+    //console.log(JSON.stringify(result, null, '\t'));
+    return countStamp;
+}
+document.getElementById('ex-usage-46').innerHTML = '\nminimumStamp([1, 17, 5, 15], 16);';
+document.getElementById('ex-output-46').innerHTML = '\n' + minimumStamp([1, 17, 5, 15], 16);
 /* end: ex-46 */
 
 /* start: ex-47 */
