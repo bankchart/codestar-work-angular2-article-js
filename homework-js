@@ -39,7 +39,7 @@ similar('hello', 'world') มี o หรือ l เหมือนกัน 1 
 similar('hello', 'hello') เหมือนกัน 100%
 similar('algorithm', 'logarithm') มี rithm เหมือนกัน 5 ตัวติดกันจาก 9 ตัว = 55.55%
 similar('rhythm', 'algorithm') มี thm เหมือนกัน 3 ตัวติดกันจาก 6 ตัว = 50%
-28. ให้เขียน function permute(s) แล้วพิมพ์รายการที่เกิดจากการสลับตัวอักษรทั้งหมดออกมา เช่น permute('ABC') ได้ ABC ACB BAC BCA CAB CBA ไม่จำเป็นต้องเรียงตามนี้แต่ต้องมีครบ
+*-28. ให้เขียน function permute(s) แล้วพิมพ์รายการที่เกิดจากการสลับตัวอักษรทั้งหมดออกมา เช่น permute('ABC') ได้ ABC ACB BAC BCA CAB CBA ไม่จำเป็นต้องเรียงตามนี้แต่ต้องมีครบ
 *-29. ให้เขียน function thaiNumber(x) แปลงเป็นตัวเลขไทย เช่น thaiNumber(23.85) ได้คำตอบเป็น '๒๓.๘๕'
 *-30. ให้เขียน function arabicNumber(x) แปลงเลขไทยเป็นอารบิก เช่น arabicNumber('๒๓.๘๕') ได้คำตอบเป็น 23.85
 

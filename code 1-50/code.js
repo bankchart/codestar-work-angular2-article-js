@@ -1,3 +1,4 @@
+//25 27 40 50 51
 /* start: ex-1 */
 function meterToFoot(x){
     return 3.28084 * x;
@@ -619,7 +620,33 @@ document.getElementById('ex-output-26').innerHTML = '\n' + englishMonth('มก�
 /* end: ex-27 */
 
 /* start: ex-28 */
-
+//
+function permute(s){
+    var temp = [];
+    var mark = '';
+    for(var i=1;i<=s.length;i++)
+        mark += i;
+    var limit = parseInt(reverse(mark));
+    for(var i=parseInt(mark);i<=limit;i++){
+        var tempSwap = i.toString();
+        for(var j=0;j<tempSwap.length;j++){
+            var check = 0;
+            var str = '';
+            for(var k=0;k<mark.length;k++)
+                if(tempSwap.indexOf(mark[k]) != -1)
+                    check++;
+            if(check == mark.length){
+                for(var k=0;k<tempSwap.length;k++)
+                    str += s[tempSwap[k]-1];
+                if(temp.indexOf(str) == -1)
+                    temp.push(str);
+            }
+        }
+    }
+    return temp;
+}
+document.getElementById('ex-usage-28').innerHTML = '\npermute(\'ADCD\');';
+document.getElementById('ex-output-28').innerHTML = '\n' + permute('ADCD');
 /* end: ex-28 */
 
 /* start: ex-29 */
@@ -1060,7 +1087,7 @@ function findNearest(data){
                         i.location[0], i.location[1]).toFixed(2)
         });
     }
-    var min = temp[0].distance, index = -1;
+    var min = temp[0].distance, index = 0;
     for(var i=1;i<temp.length;i++){
         if(temp[i].distance < min){
             min = temp[i].distance;

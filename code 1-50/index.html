@@ -666,11 +666,37 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 28
+                    ข้อ 28 ให้เขียน function permute(s) แล้วพิมพ์รายการที่เกิดจากการสลับตัว
+                    อักษรทั้งหมดออกมา เช่น permute('ABC') ได้ ABC ACB BAC BCA CAB CBA ไม่จำเป็นต้องเรียงตามนี้แต่ต้องมีครบ
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-28'></code>
+                    <code id='ex-code-28'>
+                        function permute(s){
+                            var temp = [];
+                            var mark = '';
+                            for(var i=1;i<=s.length;i++)
+                                mark += i;
+                            var limit = parseInt(reverse(mark));
+                            for(var i=parseInt(mark);i<=limit;i++){
+                                var tempSwap = i.toString();
+                                for(var j=0;j&#60;tempSwap.length;j++){
+                                    var check = 0;
+                                    var str = '';
+                                    for(var k=0;k&#60;mark.length;k++)
+                                        if(tempSwap.indexOf(mark[k]) != -1)
+                                            check++;
+                                    if(check == mark.length){
+                                        for(var k=0;k&#60;tempSwap.length;k++)
+                                            str += s[tempSwap[k]-1];
+                                        if(temp.indexOf(str) == -1)
+                                            temp.push(str);
+                                    }
+                                }
+                            }
+                            return temp;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
@@ -1531,7 +1557,7 @@
                 </pre>
                 <i>usage :</i>
                 <pre>
-                    <code id='ex-usage-49'></code>
+                    <code id='ex-usage-49'><ให้เขียน function permute(s) แล้วพิมพ์รายการที่เกิดจากการสลับตัวอักษรทั้งหมดออกมา เช่น permute('ABC') ได้ ABC ACB BAC BCA CAB CBA ไม่จำเป็นต้องเรียงตามนี้แต่ต้องมีครบ/code>
                 </pre>
                 <i>output :</i>
                 <pre>
