@@ -875,7 +875,8 @@ document.getElementById('ex-output-45').innerHTML = '\n' + JSON.stringify(dispen
 function minimumStamp(s, v){
     var temp = [];
     var result = [];
-    var min = balance%s[s.length];
+    s.sort(function(a, b){return a-b;});
+    var min = balance%s[s.length-1];
     var balance = v;
     var countStamp = 0;
     var i = s.length - 1;
@@ -886,8 +887,10 @@ function minimumStamp(s, v){
                 break;
             }
             if(balance%s[j]!=0){
-                if(min > balance%s[j])
+                if(min > balance%s[j]){
                     i = j;
+                    min = balance%s[j];
+                }
             }
         }
         temp[s[i]] = Math.floor(balance/s[i]);
