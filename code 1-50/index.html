@@ -1331,11 +1331,88 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 48
+                    ข้อ 48 บริษัทแห่งหนึ่ง มีบัตรประจำตัวให้พนักงาน swipe เวลาผ่านเข้าออก
+                    ให้เขียน function workingHour(a) หาว่าพนักงานแต่ละคนมาทำงานเวลาไหน
+                    และกลับเวลาไหน เช่น
+                    <br/>
+                    var data = [<br/>
+                    	{name: 'James', time: '08:05:12'},<br/>
+                    	{name: 'James', time: '08:08:17'},<br/>
+                    	{name: 'James', time: '08:22:09'},<br/>
+                    	{name: 'John' , time: '08:35:28'},<br/>
+                    	{name: 'James', time: '17:35:11'},<br/>
+                    	{name: 'John' , time: '17:40:16'}<br/>
+                    ]<br/>
+
+                    ได้คำตอบคือ<br/>
+
+                    [<br/>
+                    	{name: 'James', arrive: '08:05:12', leave: '17:35:11'},<br/>
+                    	{name: 'John' , arrive: '08:35:28', leave: '17:40:16'},<br/>
+                    ]
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-48'></code>
+                    <code id='ex-code-48'>
+                        function workingHour(a){
+                            var result = [{name : undefined, arrive : 0, leave : 0}];
+                            var index = result.length - 1;
+                            for(var i of a){
+                                if(result[index].name == undefined){
+                                    result[index].name = i.name;
+                                }else{
+                                    var count = 0;
+                                    for(var j of result){
+                                        count = j.name == i.name ? count + 1 : count;
+                                    }
+                                    if(count == 0)
+                                        result.push({
+                                            name : i.name,
+                                            arrive : 0,
+                                            leave : 0
+                                        });
+                                }
+                            }
+                            for(var i of result){
+                                var temp_sec = [];
+                                for(j of a){
+                                    if(j.name == i.name){
+                                        var times = j.time.split(':');
+                                        console.log(times);
+                                        var hr = parseInt(times[0]);
+                                        var min = parseInt(times[1]);
+                                        var sec = parseInt(times[2]);
+                                        temp_sec.push(hr*3600 + min*60 + sec);
+
+                                        var balance_arrive = Math.min.apply(null, temp_sec);
+                                        var balance_leave = Math.max.apply(null, temp_sec);
+
+                                        var sec_arrive = balance_arrive%60;
+                                        sec_arrive = sec_arrive < 10 ? '0' + sec_arrive : sec_arrive;
+                                        balance_arrive = Math.floor(balance_arrive/60);
+                                        var min_arrive = balance_arrive%60;
+                                        min_arrive = min_arrive < 10 ? '0' + min_arrive : min_arrive;
+                                        var hr_arrive = Math.floor(balance_arrive/60);
+                                        hr_arrive = hr_arrive < 10 ? '0' + hr_arrive : hr_arrive;
+
+                                        var sec_leave = balance_leave%60;
+                                        sec_leave = sec_leave < 10 ? '0' + sec_leave : sec_leave;
+                                        balance_leave = Math.floor(balance_leave/60);
+                                        var min_leave = balance_leave%60;
+                                        min_leave = min_leave < 10 ? '0' + min_leave : min_leave;
+                                        var hr_leave = Math.floor(balance_leave/60);
+                                        hr_leave = hr_leave < 10 ? '0' + hr_leave : hr_leave;
+
+                                        i.arrive = hr_arrive + ':' + min_arrive + ':' + sec_arrive;
+                                        i.leave = hr_leave + ':' + min_leave + ':' + sec_leave;
+
+                                    }
+                                }
+
+                            }
+                            return result;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
