@@ -909,7 +909,6 @@ function subset(a){
                 carry = [];
             }
             result.push(temp2);
-            console.log(JSON.stringify(result));
         }
         if(temp.length == a.length)
             break;
@@ -1212,9 +1211,41 @@ document.getElementById('ex-output-49').innerHTML = '\n' + findNearest(
 /* end: ex-49 */
 
 /* start: ex-50 */
-function calculate(){
-
+function calculate(points){
+    var distanceFn = function(lat1, lon1, lat2, lon2) {
+            lat1 = parseFloat(lat1);
+            lon1 = parseFloat(lon1);
+            lat2 = parseFloat(lat2);
+            lon2 = parseFloat(lon2);
+            var p = 0.017453292519943295;           // Math.PI / 180
+            var c = Math.cos;
+            var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+                c(lat1 * p) * c(lat2 * p) *
+                (1 - c((lon2 - lon1) * p)) / 2;
+            return 12742 * Math.asin(Math.sqrt(a)); // 2 * 6371 km
+        }
+    var sum = 0;
+    for(var i=0;i<points.length-1;i++){
+        var lat1 = points[i].latitude;
+        var lon1 = points[i].longitude;
+        var lat2 = points[i+1].latitude;
+        var lon2 = points[i+1].longitude;
+        sum += distanceFn(lat1, lon1, lat2, lon2);
+    }
+    return sum.toFixed(2) + 'km';
 }
+document.getElementById('ex-output-50').innerHTML = '\n' + calculate([
+    { latitude: 13.780676, longitude: 100.446019 },
+    { latitude: 13.779994, longitude: 100.443683 },
+    { latitude: 13.779697, longitude: 100.443307 },
+    { latitude: 13.779222, longitude: 100.443215 },
+    { latitude: 13.777211, longitude: 100.443422 },
+    { latitude: 13.775232, longitude: 100.443582 },
+    { latitude: 13.770618, longitude: 100.444166 },
+    { latitude: 13.765426, longitude: 100.444718 },
+    { latitude: 13.759273, longitude: 100.445331 },
+    { latitude: 13.752660, longitude: 100.446223 }
+]);
 /* end: ex-50 */
 
 /* start: ex-51 */
