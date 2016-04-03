@@ -1,4 +1,4 @@
-//27 40 50 51
+//40 50 51
 /* start: ex-1 */
 function meterToFoot(x){
     return 3.28084 * x;
@@ -601,7 +601,6 @@ function romanToNumber(s) {
     }
     return result;
 }
-console.log(romanToNumber('XVII'));
 document.getElementById('ex-usage-25').innerHTML = '\nromanToNumber(\'XVII\');';
 document.getElementById('ex-output-25').innerHTML = '\n' + romanToNumber('XVII');
 /* end: ex-25 */
@@ -629,7 +628,60 @@ document.getElementById('ex-output-26').innerHTML = '\n' + englishMonth('มก�
 /* end: ex-26 */
 
 /* start: ex-27 */
+function similar(s, t){
+    console.log(s + ', ' + t);
+    if(s == t)
+        return 100 + '%';
+    var count = 0;
+    var compare = function(s, t){
+        var temp_s = '', temp_t = '';
+        for(var i=0;i<s.length;i++){
+            for(var j=i;j<s.length;j++){
+                temp_s += s[j];
+                temp_t += t[j];
+            }
+            if(temp_s == temp_t){
+                count = temp_s.length;
+                break;
+            }
+            temp_s = '';
+            temp_t = '';
+        }
+        if(count==0){
+            var diff = s.length < t.length ?
+                t.length - s.length : s.length;
+            for(var j=t.length-1;j>=0;j--){
+                if(s[j-diff] == undefined)
+                    break;
+                temp_s += s[j-diff];
+                temp_t += t[j];
+                if(temp_s == temp_t)
+                    count++;
+            }
+        }
+        if(count==0)
+            for(var i of s)
+                if(t.indexOf(i) != -1){
+                    count++;
+                    break;
+                }
+        return count;
+    }
+    var result = (compare(s, t)/s.length*100);
+    if(result.toString().indexOf('.') != -1){
+        result = result.toFixed(3);
+        return result.substring(0, result.length-1) + '%';
+    }else{
+        return count/s.length*100 + '%';
+    }
+}
 
+// console.log(similar('algorithm', 'logarithm'));
+// console.log(similar('hello', 'hello'));
+// console.log(similar('hello', 'world'));
+console.log(similar('rhythm', 'algorithm'));
+document.getElementById('ex-usage-27').innerHTML = '\nsimilar(\'rhythm\', \'algorithm\');';
+document.getElementById('ex-output-27').innerHTML = '\n' + similar('rhythm', 'algorithm');
 /* end: ex-27 */
 
 /* start: ex-28 */

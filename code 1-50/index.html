@@ -663,11 +663,65 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 27
+                    ข้อ 27 ใน web แห่งหนึ่งมีระบบป้องกันการ post ข้อความซ้ำโดยดูว่าข้อความ
+                    เหมือนกันกี่เปอร์เซ็นต์ ให้เขียน function similar(s, t) แล้วบอกว่า string
+                    ทั้งสองตัวที่เข้ามาเหมือนกันกี่เปอร์เซ็นต์เช่น
+                    similar('hello', 'world') มี o หรือ l เหมือนกัน 1 ตัวติดกันจาก 5 ตัว = 20%
+                    similar('hello', 'hello') เหมือนกัน 100%
+                    similar('algorithm', 'logarithm') มี rithm เหมือนกัน 5 ตัวติดกันจาก 9 ตัว = 55.55%
+                    similar('rhythm', 'algorithm') มี thm เหมือนกัน 3 ตัวติดกันจาก 6 ตัว = 50%
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-27'></code>
+                    <code id='ex-code-27'>
+                        function similar(s, t){
+                            console.log(s + ', ' + t);
+                            if(s == t)
+                                return 100 + '%';
+                            var count = 0;
+                            var compare = function(s, t){
+                                var temp_s = '', temp_t = '';
+                                for(var i=0;i&#60;s.length;i++){
+                                    for(var j=i;j&#60;s.length;j++){
+                                        temp_s += s[j];
+                                        temp_t += t[j];
+                                    }
+                                    if(temp_s == temp_t){
+                                        count = temp_s.length;
+                                        break;
+                                    }
+                                    temp_s = '';
+                                    temp_t = '';
+                                }
+                                if(count==0){
+                                    var diff = s.length < t.length ?
+                                        t.length - s.length : s.length;
+                                    for(var j=t.length-1;j>=0;j--){
+                                        if(s[j-diff] == undefined)
+                                            break;
+                                        temp_s += s[j-diff];
+                                        temp_t += t[j];
+                                        if(temp_s == temp_t)
+                                            count++;
+                                    }
+                                }
+                                if(count==0)
+                                    for(var i of s)
+                                        if(t.indexOf(i) != -1){
+                                            count++;
+                                            break;
+                                        }
+                                return count;
+                            }
+                            var result = (compare(s, t)/s.length*100);
+                            if(result.toString().indexOf('.') != -1){
+                                result = result.toFixed(3);
+                                return result.substring(0, result.length-1) + '%';
+                            }else{
+                                return count/s.length*100 + '%';
+                            }
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
@@ -675,7 +729,7 @@
                 </pre>
                 <i>output :</i>
                 <pre>
-                    <code id='ex-output-278'></code>
+                    <code id='ex-output-27'></code>
                 </pre>
             </div>
 
