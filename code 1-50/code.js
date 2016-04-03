@@ -1,4 +1,4 @@
-// 50 51
+// 51
 /* start: ex-1 */
 function meterToFoot(x){
     return 3.28084 * x;
@@ -1249,5 +1249,71 @@ document.getElementById('ex-output-50').innerHTML = '\n' + calculate([
 /* end: ex-50 */
 
 /* start: ex-51 */
-
+function findDistance(data){
+    var distanceFn = function(lat1, lon1, lat2, lon2) {
+            lat1 = parseFloat(lat1);
+            lon1 = parseFloat(lon1);
+            lat2 = parseFloat(lat2);
+            lon2 = parseFloat(lon2);
+            var p = 0.017453292519943295;           // Math.PI / 180
+            var c = Math.cos;
+            var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+                c(lat1 * p) * c(lat2 * p) *
+                (1 - c((lon2 - lon1) * p)) / 2;
+            return 12742 * Math.asin(Math.sqrt(a)); // 2 * 6371 km
+        }
+    var shortQue = [];
+    for(var i of data.stations){
+        var min = {
+            station : '',
+            d : -1
+        };
+        for(var j in data.stations){
+            if(data.stations[j].name != i.name){
+                var d = distanceFn(i.latitude, i.longitude, data.stations[j].latitude,
+                            data.stations[j].longitude)
+                if(min.d == -1 || min.d > d){
+                    min.d = d;
+                    min.station += data.stations[j].name + '-';
+                }else if(j==data.stations.length-1){
+                    min.d = d;
+                    min.station += data.stations[j].name + '-';
+                }
+            }
+        }
+        shortQue.push(min.station.substring(0, min.station.length-1));
+    }
+    var indexs = [];
+    for(var i of shortQue){
+        if(i.indexOf(data.source) > -1 && i.indexOf(data.target) > -1){
+            indexs.push(i);
+        }
+    }
+    var range = [];
+    var indexSt = 0;
+    for(var i in indexs){
+        if(range == 0){
+            range[0] = indexs[i].indexOf(data.source);
+            range[1] = indexs[i].indexOf(data.target);
+            indexSt = i;
+        }else if(indexs[i].indexOf(data.source) - indexs[i].indexOf(data.target) > range[0] - range[1]){
+            range[0] = indexs[i].indexOf(data.source);
+            range[1] = indexs[i].indexOf(data.target);
+            indexSt = i;
+        }
+    }
+    return indexs[indexSt].substring(range[0], range[1] + data.target.length);
+}
+document.getElementById('ex-output-51').innerHTML = '\n' + findDistance({
+                            	source: 'ปิ่นเกล้า',
+                            	target: 'ปทุมธานี',
+                            	stations: [
+                            		{name: 'ปิ่นเกล้า',  latitude:'13.771658', longitude:'100.483705'},
+                            		{name: 'บางใหญ่',  latitude:'13.876868', longitude:'100.410364'},
+                            		{name: 'ศาลายา',  latitude:'13.792585', longitude:'100.327708'},
+                            		{name: 'นครชัยศรี', latitude:'13.791868', longitude:'100.170649'},
+                            		{name: 'นครปฐม',  latitude:'13.814745', longitude:'100.040460'},
+                            		{name: 'ปทุมธานี',  latitude:'13.982583', longitude:'100.534070'},
+                            	]
+                            });
 /* end: ex-51 */
