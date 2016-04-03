@@ -1117,11 +1117,57 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 40
+                    ข้อ 40 ให้เขียน function subset(a) แล้วบอกว่ามี subset ที่เป็นไปได้คืออะไร
+                    บ้าง เช่น subset(['Apple', 'Banana', 'Coconut']) ได้ [], ['Apple'],
+                    ['Banana'], ['Coconut'], ['Apple', 'Banana'], ['Banana', 'Coconut'],
+                    ['Apple', 'Coconut'], ['Apple', 'Banana', 'Coconut'] ไม่จำเป็น
+                    ต้องเรียงตามลำดับนี้แต่ต้องมีทุกตัว
                 </h4>
                 <i>code :</i>
                 <pre>
-                    <code id='ex-code-40'></code>
+                    <code id='ex-code-40'>
+                        function subset(a){
+                            var n = Math.pow(2, a.length);
+                            var result = [];
+                            var end = 3;
+                            var start = 0;
+                            var carry = [];
+                            result.push([]);
+                            result.push(a);
+                            for(var i of a)
+                                result.push([i]);
+                            while(a.length>2 && result.length < n){
+                                var temp = [];
+                                temp = a.slice(start, end);
+                                for(var j in temp){
+                                    if(result.length == n)
+                                        break;
+                                    if(a[a.length-1] == temp[j]){
+                                        if(temp.length-1&#60;a.length-1){
+                                            start=0;
+                                            carry.push(temp[j]);
+                                            break;
+                                        }
+                                    }else if(j==temp.length-1){
+                                        carry.push(temp[0]);
+                                        start++;
+                                        end++;
+                                    }
+                                    var temp2 = temp.slice();
+                                    temp2.splice(j, 1);
+                                    if(carry.length==2){
+                                        result.push(carry);
+                                        carry = [];
+                                    }
+                                    result.push(temp2);
+                                    console.log(JSON.stringify(result));
+                                }
+                                if(temp.length == a.length)
+                                    break;
+                            }
+                            return result;
+                        }
+                    </code>
                 </pre>
                 <i>usage :</i>
                 <pre>
@@ -1626,7 +1672,17 @@
                 </pre>
                 <i>usage :</i>
                 <pre>
-                    <code id='ex-usage-49'><ให้เขียน function permute(s) แล้วพิมพ์รายการที่เกิดจากการสลับตัวอักษรทั้งหมดออกมา เช่น permute('ABC') ได้ ABC ACB BAC BCA CAB CBA ไม่จำเป็นต้องเรียงตามนี้แต่ต้องมีครบ/code>
+                    <code id='ex-usage-49'>
+                        findNearest(
+                            {
+                                location: [13.776196, 100.443564],
+                                users: [
+                                    { name: 'James', location: [13.778918, 100.476235]},
+                                    { name: 'John' , location: [13.781090, 100.447631]}
+                                ]
+                            }
+                        );
+                    </code>
                 </pre>
                 <i>output :</i>
                 <pre>
@@ -1637,7 +1693,23 @@
 
             <div class='well'>
                 <h4>
-                    ข้อ 50
+                    ข้อ 50 50. บริษัทแห่งหนึ่ง ต้องการเก็บข้อมูลว่าพนักงานเดินทางวันละกี่กิโลเมตร จะได้จ่ายค่าน้ำมันได้ตรงกับความจริงมากที่สุด ให้เขียน function calculate(a) รับ array เข้ามาหาว่าพนักงานคนนี้เดินทางกี่กิโลเมตร เช่น
+                    <pre>
+                        calculate([
+                        { latitude: 13.780676, longitude: 100.446019 },
+                        { latitude: 13.779994, longitude: 100.443683 },
+                        { latitude: 13.779697, longitude: 100.443307 },
+                        { latitude: 13.779222, longitude: 100.443215 },
+                        { latitude: 13.777211, longitude: 100.443422 },
+                        { latitude: 13.775232, longitude: 100.443582 },
+                        { latitude: 13.770618, longitude: 100.444166 },
+                        { latitude: 13.765426, longitude: 100.444718 },
+                        { latitude: 13.759273, longitude: 100.445331 },
+                        { latitude: 13.752660, longitude: 100.446223 }
+                        ]);
+
+                        ได้ผลลัพธ์ 3.34 กิโลเมตร (ระยะทางจริง 3.4 กิโลเมตร)
+                </pre>
                 </h4>
                 <i>code :</i>
                 <pre>

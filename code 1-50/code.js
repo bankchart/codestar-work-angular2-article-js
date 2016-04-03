@@ -1,4 +1,4 @@
-//40 50 51
+// 50 51
 /* start: ex-1 */
 function meterToFoot(x){
     return 3.28084 * x;
@@ -629,7 +629,6 @@ document.getElementById('ex-output-26').innerHTML = '\n' + englishMonth('มก�
 
 /* start: ex-27 */
 function similar(s, t){
-    console.log(s + ', ' + t);
     if(s == t)
         return 100 + '%';
     var count = 0;
@@ -679,13 +678,11 @@ function similar(s, t){
 // console.log(similar('algorithm', 'logarithm'));
 // console.log(similar('hello', 'hello'));
 // console.log(similar('hello', 'world'));
-console.log(similar('rhythm', 'algorithm'));
 document.getElementById('ex-usage-27').innerHTML = '\nsimilar(\'rhythm\', \'algorithm\');';
 document.getElementById('ex-output-27').innerHTML = '\n' + similar('rhythm', 'algorithm');
 /* end: ex-27 */
 
 /* start: ex-28 */
-//
 function permute(s){
     var temp = [];
     var mark = '';
@@ -878,7 +875,49 @@ document.getElementById('ex-output-39').innerHTML = '\n' + factor(89);
 /* end: ex-39 */
 
 /* start: ex-40 */
-
+function subset(a){
+    var n = Math.pow(2, a.length);
+    var result = [];
+    var end = 3;
+    var start = 0;
+    var carry = [];
+    result.push([]);
+    result.push(a);
+    for(var i of a)
+        result.push([i]);
+    while(a.length>2 && result.length < n){
+        var temp = [];
+        temp = a.slice(start, end);
+        for(var j in temp){
+            if(result.length == n)
+                break;
+            if(a[a.length-1] == temp[j]){
+                if(temp.length-1<a.length-1){
+                    start=0;
+                    carry.push(temp[j]);
+                    break;
+                }
+            }else if(j==temp.length-1){
+                carry.push(temp[0]);
+                start++;
+                end++;
+            }
+            var temp2 = temp.slice();
+            temp2.splice(j, 1);
+            if(carry.length==2){
+                result.push(carry);
+                carry = [];
+            }
+            result.push(temp2);
+            console.log(JSON.stringify(result));
+        }
+        if(temp.length == a.length)
+            break;
+    }
+    return result;
+}
+document.getElementById('ex-usage-40').innerHTML = '\nsubset([\'Apple\', \'Banana\', \'Coconut\']);';
+document.getElementById('ex-output-40').innerHTML = '\n' + JSON.stringify(subset(['Apple', 'Banana', 'Coconut']));
 /* end: ex-40 */
 
 /* start: ex-41 */
@@ -1161,15 +1200,6 @@ function findNearest(data){
     }
     return temp[index].name;
 }
-document.getElementById('ex-usage-49').innerHTML = '\nfindNearest(\n' +
-                                            '{\n' +
-                                                '\tlocation: [13.776196, 100.443564],\n' +
-                                                '\tusers: [\n' +
-                                                    '\t\t{ name: \'James\', location: [13.778918, 100.476235]},\n' +
-                                                    '\t\t{ name: \'John\' , location: [13.781090, 100.447631]}\n' +
-                                                '\t]\n' +
-                                            '}\n' +
-                                            ');';
 document.getElementById('ex-output-49').innerHTML = '\n' + findNearest(
     {
         location: [13.776196, 100.443564],
@@ -1182,5 +1212,11 @@ document.getElementById('ex-output-49').innerHTML = '\n' + findNearest(
 /* end: ex-49 */
 
 /* start: ex-50 */
+function calculate(){
 
+}
 /* end: ex-50 */
+
+/* start: ex-51 */
+
+/* end: ex-51 */
